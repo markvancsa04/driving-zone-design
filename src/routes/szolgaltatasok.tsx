@@ -20,8 +20,8 @@ function ServicesPage() {
     <>
       <PageHeader
         eyebrow="Szolgáltatások"
-        title="[Szolgáltatások és árak]"
-        intro="[Rövid bevezető]"
+        title="Szolgáltatásaink – Driving Zone"
+        intro="Nálunk mindent egy helyen elintézhetsz, ami a járművezetéssel és a jogosítvánnyal kapcsolatos.&nbsp;"
       />
       <Section>
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
