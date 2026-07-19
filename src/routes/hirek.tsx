@@ -1,0 +1,43 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { PageHeader, Section } from "@/components/Section";
+import { ArrowRight, Newspaper } from "lucide-react";
+
+export const Route = createFileRoute("/hirek")({
+  head: () => ({
+    meta: [
+      { title: "Hírek – Driving Zone" },
+      { name: "description", content: "Legfrissebb híreink és bejegyzéseink." },
+      { property: "og:title", content: "Hírek – Driving Zone" },
+      { property: "og:description", content: "Nézd meg legfrissebb híreinket." },
+    ],
+  }),
+  component: NewsPage,
+});
+
+function NewsPage() {
+  return (
+    <>
+      <PageHeader eyebrow="Hírek" title="[Hírek – főcím]" intro="[Rövid bevezető]" />
+      <Section>
+        <div className="max-w-2xl mx-auto">
+          <article className="card-lift rounded-3xl border border-border bg-card p-10 md:p-14 text-center">
+            <div className="h-14 w-14 mx-auto rounded-2xl bg-brand-soft grid place-items-center text-brand">
+              <Newspaper className="size-6" />
+            </div>
+            <h2 className="mt-6 text-3xl font-semibold text-ink">[Hír címe]</h2>
+            <p className="mt-4 text-muted-foreground">
+              [Rövid leírás a hírfolyamról]
+            </p>
+            <a
+              href="#"
+              className="btn-brand mt-8"
+              // TODO: cseréld le a valódi URL-re
+            >
+              Hírfolyam <ArrowRight className="size-4" />
+            </a>
+          </article>
+        </div>
+      </Section>
+    </>
+  );
+}

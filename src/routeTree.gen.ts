@@ -9,8 +9,86 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VizsgatippekRouteImport } from './routes/vizsgatippek'
+import { Route as VelemenyekRouteImport } from './routes/velemenyek'
+import { Route as TestepermisRouteImport } from './routes/testepermis'
+import { Route as SzolgaltatasokRouteImport } from './routes/szolgaltatasok'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SikereinkRouteImport } from './routes/sikereink'
+import { Route as RolunkRouteImport } from './routes/rolunk'
+import { Route as OktatokRouteImport } from './routes/oktatok'
+import { Route as KapcsolatRouteImport } from './routes/kapcsolat'
+import { Route as JelentkezesRouteImport } from './routes/jelentkezes'
+import { Route as HirekRouteImport } from './routes/hirek'
+import { Route as GyikRouteImport } from './routes/gyik'
+import { Route as AutokRouteImport } from './routes/autok'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VizsgatippekRoute = VizsgatippekRouteImport.update({
+  id: '/vizsgatippek',
+  path: '/vizsgatippek',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VelemenyekRoute = VelemenyekRouteImport.update({
+  id: '/velemenyek',
+  path: '/velemenyek',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TestepermisRoute = TestepermisRouteImport.update({
+  id: '/testepermis',
+  path: '/testepermis',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SzolgaltatasokRoute = SzolgaltatasokRouteImport.update({
+  id: '/szolgaltatasok',
+  path: '/szolgaltatasok',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SikereinkRoute = SikereinkRouteImport.update({
+  id: '/sikereink',
+  path: '/sikereink',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RolunkRoute = RolunkRouteImport.update({
+  id: '/rolunk',
+  path: '/rolunk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OktatokRoute = OktatokRouteImport.update({
+  id: '/oktatok',
+  path: '/oktatok',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KapcsolatRoute = KapcsolatRouteImport.update({
+  id: '/kapcsolat',
+  path: '/kapcsolat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JelentkezesRoute = JelentkezesRouteImport.update({
+  id: '/jelentkezes',
+  path: '/jelentkezes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HirekRoute = HirekRouteImport.update({
+  id: '/hirek',
+  path: '/hirek',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GyikRoute = GyikRouteImport.update({
+  id: '/gyik',
+  path: '/gyik',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AutokRoute = AutokRouteImport.update({
+  id: '/autok',
+  path: '/autok',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +97,214 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/autok': typeof AutokRoute
+  '/gyik': typeof GyikRoute
+  '/hirek': typeof HirekRoute
+  '/jelentkezes': typeof JelentkezesRoute
+  '/kapcsolat': typeof KapcsolatRoute
+  '/oktatok': typeof OktatokRoute
+  '/rolunk': typeof RolunkRoute
+  '/sikereink': typeof SikereinkRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/szolgaltatasok': typeof SzolgaltatasokRoute
+  '/testepermis': typeof TestepermisRoute
+  '/velemenyek': typeof VelemenyekRoute
+  '/vizsgatippek': typeof VizsgatippekRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/autok': typeof AutokRoute
+  '/gyik': typeof GyikRoute
+  '/hirek': typeof HirekRoute
+  '/jelentkezes': typeof JelentkezesRoute
+  '/kapcsolat': typeof KapcsolatRoute
+  '/oktatok': typeof OktatokRoute
+  '/rolunk': typeof RolunkRoute
+  '/sikereink': typeof SikereinkRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/szolgaltatasok': typeof SzolgaltatasokRoute
+  '/testepermis': typeof TestepermisRoute
+  '/velemenyek': typeof VelemenyekRoute
+  '/vizsgatippek': typeof VizsgatippekRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/autok': typeof AutokRoute
+  '/gyik': typeof GyikRoute
+  '/hirek': typeof HirekRoute
+  '/jelentkezes': typeof JelentkezesRoute
+  '/kapcsolat': typeof KapcsolatRoute
+  '/oktatok': typeof OktatokRoute
+  '/rolunk': typeof RolunkRoute
+  '/sikereink': typeof SikereinkRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/szolgaltatasok': typeof SzolgaltatasokRoute
+  '/testepermis': typeof TestepermisRoute
+  '/velemenyek': typeof VelemenyekRoute
+  '/vizsgatippek': typeof VizsgatippekRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/autok'
+    | '/gyik'
+    | '/hirek'
+    | '/jelentkezes'
+    | '/kapcsolat'
+    | '/oktatok'
+    | '/rolunk'
+    | '/sikereink'
+    | '/sitemap.xml'
+    | '/szolgaltatasok'
+    | '/testepermis'
+    | '/velemenyek'
+    | '/vizsgatippek'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/autok'
+    | '/gyik'
+    | '/hirek'
+    | '/jelentkezes'
+    | '/kapcsolat'
+    | '/oktatok'
+    | '/rolunk'
+    | '/sikereink'
+    | '/sitemap.xml'
+    | '/szolgaltatasok'
+    | '/testepermis'
+    | '/velemenyek'
+    | '/vizsgatippek'
+  id:
+    | '__root__'
+    | '/'
+    | '/autok'
+    | '/gyik'
+    | '/hirek'
+    | '/jelentkezes'
+    | '/kapcsolat'
+    | '/oktatok'
+    | '/rolunk'
+    | '/sikereink'
+    | '/sitemap.xml'
+    | '/szolgaltatasok'
+    | '/testepermis'
+    | '/velemenyek'
+    | '/vizsgatippek'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AutokRoute: typeof AutokRoute
+  GyikRoute: typeof GyikRoute
+  HirekRoute: typeof HirekRoute
+  JelentkezesRoute: typeof JelentkezesRoute
+  KapcsolatRoute: typeof KapcsolatRoute
+  OktatokRoute: typeof OktatokRoute
+  RolunkRoute: typeof RolunkRoute
+  SikereinkRoute: typeof SikereinkRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SzolgaltatasokRoute: typeof SzolgaltatasokRoute
+  TestepermisRoute: typeof TestepermisRoute
+  VelemenyekRoute: typeof VelemenyekRoute
+  VizsgatippekRoute: typeof VizsgatippekRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vizsgatippek': {
+      id: '/vizsgatippek'
+      path: '/vizsgatippek'
+      fullPath: '/vizsgatippek'
+      preLoaderRoute: typeof VizsgatippekRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/velemenyek': {
+      id: '/velemenyek'
+      path: '/velemenyek'
+      fullPath: '/velemenyek'
+      preLoaderRoute: typeof VelemenyekRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/testepermis': {
+      id: '/testepermis'
+      path: '/testepermis'
+      fullPath: '/testepermis'
+      preLoaderRoute: typeof TestepermisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/szolgaltatasok': {
+      id: '/szolgaltatasok'
+      path: '/szolgaltatasok'
+      fullPath: '/szolgaltatasok'
+      preLoaderRoute: typeof SzolgaltatasokRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sikereink': {
+      id: '/sikereink'
+      path: '/sikereink'
+      fullPath: '/sikereink'
+      preLoaderRoute: typeof SikereinkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rolunk': {
+      id: '/rolunk'
+      path: '/rolunk'
+      fullPath: '/rolunk'
+      preLoaderRoute: typeof RolunkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oktatok': {
+      id: '/oktatok'
+      path: '/oktatok'
+      fullPath: '/oktatok'
+      preLoaderRoute: typeof OktatokRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kapcsolat': {
+      id: '/kapcsolat'
+      path: '/kapcsolat'
+      fullPath: '/kapcsolat'
+      preLoaderRoute: typeof KapcsolatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jelentkezes': {
+      id: '/jelentkezes'
+      path: '/jelentkezes'
+      fullPath: '/jelentkezes'
+      preLoaderRoute: typeof JelentkezesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hirek': {
+      id: '/hirek'
+      path: '/hirek'
+      fullPath: '/hirek'
+      preLoaderRoute: typeof HirekRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gyik': {
+      id: '/gyik'
+      path: '/gyik'
+      fullPath: '/gyik'
+      preLoaderRoute: typeof GyikRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/autok': {
+      id: '/autok'
+      path: '/autok'
+      fullPath: '/autok'
+      preLoaderRoute: typeof AutokRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +317,20 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AutokRoute: AutokRoute,
+  GyikRoute: GyikRoute,
+  HirekRoute: HirekRoute,
+  JelentkezesRoute: JelentkezesRoute,
+  KapcsolatRoute: KapcsolatRoute,
+  OktatokRoute: OktatokRoute,
+  RolunkRoute: RolunkRoute,
+  SikereinkRoute: SikereinkRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SzolgaltatasokRoute: SzolgaltatasokRoute,
+  TestepermisRoute: TestepermisRoute,
+  VelemenyekRoute: VelemenyekRoute,
+  VizsgatippekRoute: VizsgatippekRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
