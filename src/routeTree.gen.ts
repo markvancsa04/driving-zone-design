@@ -13,6 +13,7 @@ import { Route as VizsgatippekRouteImport } from './routes/vizsgatippek'
 import { Route as VelemenyekRouteImport } from './routes/velemenyek'
 import { Route as TestepermisRouteImport } from './routes/testepermis'
 import { Route as SzolgaltatasokRouteImport } from './routes/szolgaltatasok'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SikereinkRouteImport } from './routes/sikereink'
 import { Route as RolunkRouteImport } from './routes/rolunk'
 import { Route as OktatokRouteImport } from './routes/oktatok'
@@ -41,6 +42,11 @@ const TestepermisRoute = TestepermisRouteImport.update({
 const SzolgaltatasokRoute = SzolgaltatasokRouteImport.update({
   id: '/szolgaltatasok',
   path: '/szolgaltatasok',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SikereinkRoute = SikereinkRouteImport.update({
@@ -99,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/oktatok': typeof OktatokRoute
   '/rolunk': typeof RolunkRoute
   '/sikereink': typeof SikereinkRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/szolgaltatasok': typeof SzolgaltatasokRoute
   '/testepermis': typeof TestepermisRoute
   '/velemenyek': typeof VelemenyekRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByTo {
   '/oktatok': typeof OktatokRoute
   '/rolunk': typeof RolunkRoute
   '/sikereink': typeof SikereinkRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/szolgaltatasok': typeof SzolgaltatasokRoute
   '/testepermis': typeof TestepermisRoute
   '/velemenyek': typeof VelemenyekRoute
@@ -130,6 +138,7 @@ export interface FileRoutesById {
   '/oktatok': typeof OktatokRoute
   '/rolunk': typeof RolunkRoute
   '/sikereink': typeof SikereinkRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/szolgaltatasok': typeof SzolgaltatasokRoute
   '/testepermis': typeof TestepermisRoute
   '/velemenyek': typeof VelemenyekRoute
@@ -147,6 +156,7 @@ export interface FileRouteTypes {
     | '/oktatok'
     | '/rolunk'
     | '/sikereink'
+    | '/sitemap.xml'
     | '/szolgaltatasok'
     | '/testepermis'
     | '/velemenyek'
@@ -162,6 +172,7 @@ export interface FileRouteTypes {
     | '/oktatok'
     | '/rolunk'
     | '/sikereink'
+    | '/sitemap.xml'
     | '/szolgaltatasok'
     | '/testepermis'
     | '/velemenyek'
@@ -177,6 +188,7 @@ export interface FileRouteTypes {
     | '/oktatok'
     | '/rolunk'
     | '/sikereink'
+    | '/sitemap.xml'
     | '/szolgaltatasok'
     | '/testepermis'
     | '/velemenyek'
@@ -193,6 +205,7 @@ export interface RootRouteChildren {
   OktatokRoute: typeof OktatokRoute
   RolunkRoute: typeof RolunkRoute
   SikereinkRoute: typeof SikereinkRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SzolgaltatasokRoute: typeof SzolgaltatasokRoute
   TestepermisRoute: typeof TestepermisRoute
   VelemenyekRoute: typeof VelemenyekRoute
@@ -227,6 +240,13 @@ declare module '@tanstack/react-router' {
       path: '/szolgaltatasok'
       fullPath: '/szolgaltatasok'
       preLoaderRoute: typeof SzolgaltatasokRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sikereink': {
@@ -305,6 +325,7 @@ const rootRouteChildren: RootRouteChildren = {
   OktatokRoute: OktatokRoute,
   RolunkRoute: RolunkRoute,
   SikereinkRoute: SikereinkRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SzolgaltatasokRoute: SzolgaltatasokRoute,
   TestepermisRoute: TestepermisRoute,
   VelemenyekRoute: VelemenyekRoute,
