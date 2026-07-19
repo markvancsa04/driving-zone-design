@@ -30,26 +30,16 @@ function HomePage() {
           intro=""
         />
         <div className="grid gap-6 md:grid-cols-3">
-          <article className="card-lift rounded-3xl border border-border bg-card p-8">
-            <div className="h-12 w-12 rounded-2xl bg-brand-soft grid place-items-center text-brand mb-6">
-              <Car className="size-5" />
-            </div>
-            <h3 className="text-xl font-semibold text-ink">B kategóriás járművezetői tanfolyam&nbsp;</h3>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Türelmes és tapasztalt oktatók, akik mellett élmény a tanulás.
-            </p>
-            <div className="mt-6 text-sm font-semibold text-brand">2400 - Rontól</div>
-          </article>
-          {[2, 3].map((i) => (
-            <article key={i} className="card-lift rounded-3xl border border-border bg-card p-8">
+          {SERVICES.map((service, index) => (
+            <article key={index} className="card-lift rounded-3xl border border-border bg-card p-8">
               <div className="h-12 w-12 rounded-2xl bg-brand-soft grid place-items-center text-brand mb-6">
                 <Car className="size-5" />
               </div>
-              <h3 className="text-xl font-semibold text-ink">[Szolgáltatás címe {i}]</h3>
+              <h3 className="text-xl font-semibold text-ink">{service.title}</h3>
               <p className="mt-3 text-sm text-muted-foreground">
-                [Rövid leírás a szolgáltatásról]
+                {service.description}
               </p>
-              <div className="mt-6 text-sm font-semibold text-brand">[Ár helye]</div>
+              <div className="mt-6 text-sm font-semibold text-brand">{service.price}</div>
             </article>
           ))}
         </div>
