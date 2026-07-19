@@ -28,7 +28,7 @@ function HomePage() {
                 Driving Zone
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-ink leading-[1.02]">
-                [Nagy főcím – pl. Vezess magabiztosan velünk]
+                &nbsp;Vezess magabiztosan velünk
               </h1>
               <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl">
                 [Rövid bemutatkozás – 1–2 mondat a Driving Zone-ról]
