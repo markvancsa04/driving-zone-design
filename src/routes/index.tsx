@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Star, Award, Users, Car } from "lucide-react";
+import { ArrowRight, Star, Car } from "lucide-react";
 import { ImagePlaceholder } from "@/components/Placeholder";
 import { Section, SectionHeader } from "@/components/Section";
+import { HeroSlider } from "@/components/HeroSlider";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -18,46 +19,8 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 pt-12 md:pt-20 pb-8">
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16 items-center">
-            <div className="lg:col-span-6 fade-up">
-              <div className="mb-5 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-brand">
-                <span className="h-px w-8 bg-brand" />
-                Driving Zone
-              </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold text-ink leading-[1.02]">
-                &nbsp;Vezess magabiztosan velünk
-              </h1>
-              <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl">
-                Az elmúlt másfél évtizedben több mint 5000 diákunk szerzett sikeresen jogosítványt az irányításunk alatt. Légy te a következő!
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link to="/jelentkezes" className="btn-brand">
-                  Jelentkezés <ArrowRight className="size-4" />
-                </Link>
-                <Link to="/szolgaltatasok" className="btn-ghost">
-                  Szolgáltatások
-                </Link>
-              </div>
+      <HeroSlider />
 
-              <dl className="mt-12 grid grid-cols-3 gap-6 max-w-lg">
-                <Stat icon={<Users className="size-5" />} value="5000+" label="[Diák]" />
-                <Stat icon={<Award className="size-5" />} value="15" label="[Év]" />
-                <Stat icon={<Car className="size-5" />} value="21" label="[Kolléga]" />
-              </dl>
-            </div>
-
-            <div className="lg:col-span-6 fade-up">
-              <ImagePlaceholder
-                label="[Iroda / épület fotó helye]"
-                className="aspect-[5/4] lg:aspect-[4/5] rounded-3xl shadow-soft"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* SERVICES PREVIEW */}
       <Section>
