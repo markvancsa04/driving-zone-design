@@ -28,9 +28,9 @@ const SERVICES = [
     price: "150 - Rontól",
   },
   {
-    title: "[Szolgáltatás címe 3]",
-    description: "[Rövid leírás a szolgáltatásról]",
-    price: "[Ár helye]",
+    title: "Jogosítványcsere (Külföldi és belföldi)",
+    description: "Külföldön szerzett vezetői engedélyek románra való cseréje (honosítás).",
+    price: "Szemelyreszabott ár, kérj ajánlatot",
   },
 ];
 
