@@ -172,15 +172,3 @@ function HomePage() {
     </>
   );
 }
-
-function Stat({ icon, value, label }: { icon: React.ReactNode; value: string; label: string }) {
-  return (
-    <div>
-      <div className="h-9 w-9 rounded-xl bg-secondary grid place-items-center text-brand mb-2">
-        {icon}
-      </div>
-      <dt className="text-2xl font-semibold text-ink">{value}</dt>
-      <dd className="text-xs text-muted-foreground mt-1">{label}</dd>
-    </div>
-  );
-}
