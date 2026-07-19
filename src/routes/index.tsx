@@ -26,8 +26,8 @@ function HomePage() {
       <Section>
         <SectionHeader
           eyebrow="Szolgáltatások"
-          title={<>[Amit kínálunk<br className="hidden md:block" /> neked]</>}
-          intro="[Rövid bevezető a szolgáltatásokhoz]"
+          title="Szolgáltatásaink – Driving Zone"
+          intro=""
         />
         <div className="grid gap-6 md:grid-cols-3">
           {[1, 2, 3].map((i) => (
