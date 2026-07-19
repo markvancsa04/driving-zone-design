@@ -31,7 +31,7 @@ function HomePage() {
                 &nbsp;Vezess magabiztosan velünk
               </h1>
               <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl">
-                [Rövid bemutatkozás – 1–2 mondat a Driving Zone-ról]
+                Az elmúlt másfél évtizedben több mint 5000 diákunk szerzett sikeresen jogosítványt az irányításunk alatt. Légy te a következő!
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link to="/jelentkezes" className="btn-brand">
