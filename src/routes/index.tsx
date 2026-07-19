@@ -30,7 +30,17 @@ function HomePage() {
           intro=""
         />
         <div className="grid gap-6 md:grid-cols-3">
-          {[1, 2, 3].map((i) => (
+          <article className="card-lift rounded-3xl border border-border bg-card p-8">
+            <div className="h-12 w-12 rounded-2xl bg-brand-soft grid place-items-center text-brand mb-6">
+              <Car className="size-5" />
+            </div>
+            <h3 className="text-xl font-semibold text-ink">B kategóriás járművezetői tanfolyam&nbsp;</h3>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Türelmes és tapasztalt oktatók, akik mellett élmény a tanulás.
+            </p>
+            <div className="mt-6 text-sm font-semibold text-brand"></div>
+          </article>
+          {[2, 3].map((i) => (
             <article key={i} className="card-lift rounded-3xl border border-border bg-card p-8">
               <div className="h-12 w-12 rounded-2xl bg-brand-soft grid place-items-center text-brand mb-6">
                 <Car className="size-5" />
