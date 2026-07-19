@@ -16,6 +16,24 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
+const SERVICES = [
+  {
+    title: "B kategóriás járművezetői tanfolyam",
+    description: "Türelmes és tapasztalt oktatók, akik mellett élmény a tanulás.",
+    price: "2400 - Rontól",
+  },
+  {
+    title: "Vezetés-tökéletesítő órák (Már meglévő jogosítvánnyal)",
+    description: "Személyre szabott gyakorló órák saját vagy oktatóautóval.",
+    price: "150 - Rontól",
+  },
+  {
+    title: "[Szolgáltatás címe 3]",
+    description: "[Rövid leírás a szolgáltatásról]",
+    price: "[Ár helye]",
+  },
+];
+
 function HomePage() {
   return (
     <>
