@@ -38,7 +38,7 @@ function HomePage() {
             <p className="mt-3 text-sm text-muted-foreground">
               Türelmes és tapasztalt oktatók, akik mellett élmény a tanulás.
             </p>
-            <div className="mt-6 text-sm font-semibold text-brand">[Ár helye]</div>
+            <div className="mt-6 text-sm font-semibold text-brand">2400 - Rontól</div>
           </article>
           {[2, 3].map((i) => (
             <article key={i} className="card-lift rounded-3xl border border-border bg-card p-8">
