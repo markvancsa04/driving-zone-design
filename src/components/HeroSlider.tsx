@@ -5,8 +5,8 @@ import hero1 from "@/assets/hero-1.png.asset.json";
 import hero2 from "@/assets/hero-2.png.asset.json";
 
 const SLIDES = [
-  { src: hero1.url, alt: "Driving Zone – iratkozás", position: "50% 40%" },
   { src: hero2.url, alt: "Driving Zone – Skoda a tengerparton", position: "50% 50%" },
+  { src: hero1.url, alt: "Driving Zone – iratkozás", position: "50% 40%" },
 ];
 
 const INTERVAL = 6000;
