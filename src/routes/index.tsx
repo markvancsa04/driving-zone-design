@@ -154,8 +154,8 @@ function HomePage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeader
             eyebrow="Sikereink"
-            title="[Diákjaink]"
-            intro="[Rövid szöveg a sikerekről]"
+            title="Sikereink | Driving Zone"
+            intro="Tekintse meg korábbi munkáinkat és azokat az eredményeket, amelyekre büszkék vagyunk."
           />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {GALLERY_IMAGES.slice(0, 4).map((src, i) => (
