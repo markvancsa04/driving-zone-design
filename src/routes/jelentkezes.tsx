@@ -17,12 +17,23 @@ export const Route = createFileRoute("/jelentkezes")({
 
 function ApplyPage() {
   const [sent, setSent] = useState(false);
+
+  const openingHours = [
+    "hétfő, 8:00–16:00",
+    "kedd, 8:00–16:00",
+    "szerda, 8:00–16:00",
+    "csütörtök, 8:00–16:00",
+    "péntek, 8:00–16:00",
+    "szombat, Zárva",
+    "vasárnap, Zárva"
+  ];
+
   return (
     <>
       <PageHeader
         eyebrow="Jelentkezés"
-        title="[Jelentkezés – főcím]"
-        intro="[Rövid bevezető – vedd fel velünk a kapcsolatot]"
+        title="Készen állsz?"
+        intro="Töltsd ki az űrlapot, és kezdjük el együtt a vezetéshez vezető utat!"
       />
       <Section>
         <div className="grid gap-12 lg:grid-cols-12">
@@ -50,7 +61,7 @@ function ApplyPage() {
                     rows={5}
                     maxLength={1000}
                     className="w-full rounded-2xl border border-input bg-background px-4 py-3 text-sm text-ink placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand"
-                    placeholder="[Rövid üzenet]"
+                    placeholder="Miben segíthetünk?"
                   />
                 </div>
                 <button type="submit" className="btn-brand mt-2 w-full sm:w-auto">
@@ -58,7 +69,7 @@ function ApplyPage() {
                 </button>
                 {sent && (
                   <p className="text-sm text-brand font-medium fade-up">
-                    [Köszönjük! Hamarosan felvesszük veled a kapcsolatot.]
+                    Köszönjük! Hamarosan felvesszük veled a kapcsolatot.
                   </p>
                 )}
               </div>
@@ -67,13 +78,40 @@ function ApplyPage() {
 
           <aside className="lg:col-span-5">
             <div className="rounded-3xl border border-border bg-secondary/40 p-8 space-y-6">
-              <InfoRow icon={<MapPin className="size-4" />} label="Cím" value="[Cím helye]" />
-              <InfoRow icon={<Phone className="size-4" />} label="Telefon" value="[Telefonszám]" />
-              <InfoRow icon={<Mail className="size-4" />} label="E-mail" value="[E-mail cím]" />
-              <InfoRow icon={<Clock className="size-4" />} label="Nyitvatartás" value="[Munkaidő]" />
+              <InfoRow
+                icon={<MapPin className="size-4" />}
+                label="Cím"
+                value={
+                  <div className="whitespace-pre-line">
+                    {"Kézdivásárhely\n17.es Udvartér 1.es szám"}
+                  </div>
+                }
+              />
+              <InfoRow icon={<Phone className="size-4" />} label="Telefon" value="0786 585 405" />
+              <InfoRow icon={<Mail className="size-4" />} label="E-mail" value="drivingzonedrz@gmail.com" />
+              <InfoRow
+                icon={<Clock className="size-4" />}
+                label="Nyitvatartás"
+                value={
+                  <div className="space-y-1">
+                    {openingHours.map((line) => (
+                      <div key={line} className="text-sm">
+                        {line}
+                      </div>
+                    ))}
+                  </div>
+                }
+              />
             </div>
-            <div className="mt-6 placeholder-frame aspect-[4/3] rounded-3xl">
-              <span>[Google Maps helye]</span>
+            <div className="mt-6 placeholder-frame aspect-[4/3] rounded-3xl overflow-hidden">
+              <iframe
+                title="Google Maps"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2770.8166579895083!2d26.1389208!3d46.0009686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDbCsDAwJzAzLjUiTiAyNsKwMDgnMjAuMSJF!5e0!3m2!1sen!2shu!4v1715850000000!5m2!1sen!2shu"
+                className="w-full h-full border-0"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </aside>
         </div>
@@ -101,7 +139,7 @@ function Field({ label, name, type = "text", required = false }: { label: string
   );
 }
 
-function InfoRow({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+function InfoRow({ icon, label, value }: { icon: React.ReactNode; label: string; value: React.ReactNode }) {
   return (
     <div className="flex gap-4">
       <div className="h-10 w-10 rounded-2xl bg-background border border-border grid place-items-center text-brand shrink-0">
