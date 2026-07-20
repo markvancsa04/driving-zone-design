@@ -15,6 +15,24 @@ export const Route = createFileRoute("/oktatok")({
   component: InstructorsPage,
 });
 
+const INSTRUCTORS = [
+  {
+    name: "Illés Bálint",
+    role: "TULAJDONOS, MENEDZSER ÉS OKTATÓ",
+    description: "Emberi értékek és szerénység: Bálint nem a háttérből irányít. Tulajdonosként és menedzserként is közvetlen, két lábbal a földön járó ember maradt, aki maga is aktívan oktat. Számára minden egyes tanuló egyedi sorsot jelent, és a legnagyobb elismerés nem a száraz statisztika, hanem a diákok arcán látható őszinte öröm és biztonságérzet."
+  },
+  {
+    name: "Illés László",
+    role: "AZ ISKOLA SZÜLŐATYJA",
+    description: "Több évtizedes szakmai tapasztalat: László a kétezres évek eleje óta oktat, így több ezer sofőr hálás neki a biztos alapokért. Nincs olyan közlekedési szituáció, műszaki probléma vagy oktatási helyzet, amivel az évek során ne találkozott volna."
+  },
+  {
+    name: "Csüdör Lóránd",
+    role: "GYAKORLATI OKTATÓ",
+    description: "Világjáró tapasztalat és magas szintű kommunikáció: Lóránd Kolozsváron végzett egyetemet, majd éveken át Angliában élt és dolgozott. Az ott szerzett tapasztalatok, a precizitás és a nemzetközi szemlélet mind hozzájárulnak ahhoz, hogy a legmagasabb színvonalon, végtelenül professzionálisan oktasson – nálunk akár idegen nyelven is!"
+  }
+];
+
 function InstructorsPage() {
   return (
     <>
@@ -25,21 +43,21 @@ function InstructorsPage() {
       />
       <Section>
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-          {[1, 2, 3, 4, 5].map((i) => (
+          {INSTRUCTORS.map((instructor, i) => (
             <article key={i} className="card-lift rounded-3xl overflow-hidden bg-card border border-border">
               <ImagePlaceholder
-                label={`[Oktató ${i} fotó]`}
+                label={instructor.name}
                 className="aspect-[4/5] rounded-none border-0 border-b border-border"
                 src={instructorImageAsset.url}
-                alt="Driving Zone oktató"
+                alt={instructor.name}
               />
               <div className="p-8">
                 <div className="text-xs font-semibold tracking-widest uppercase text-brand">
-                  [Szerepkör]
+                  {instructor.role}
                 </div>
-                <h3 className="mt-2 text-2xl font-semibold text-ink">[Oktató neve]</h3>
+                <h3 className="mt-2 text-2xl font-semibold text-ink">{instructor.name}</h3>
                 <p className="mt-3 text-sm text-muted-foreground">
-                  [Rövid bemutatkozás – 2–3 mondat]
+                  {instructor.description}
                 </p>
               </div>
             </article>
