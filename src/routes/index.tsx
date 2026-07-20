@@ -35,6 +35,17 @@ const SERVICES = [
   },
 ];
 
+const FEATURED_INSTRUCTORS = [
+  {
+    name: "Balint - tulajdonos, menedzser és oktató",
+    intro: "Ismerd meg az iskola vezetőjét.",
+  },
+  {
+    name: "[Oktató neve]",
+    intro: "[Rövid bemutatkozás]",
+  },
+];
+
 function HomePage() {
   return (
     <>
