@@ -33,12 +33,12 @@ const practicalItems = [
     a: "Semmi probléma, az oktató lépésről lépésre megtanít minden alapot.",
   },
   {
-    q: "[Gyakorlati kérdés 5]",
-    a: "[Gyakorlati válasz 5]",
+    q: "Nehéz a forgalmi vizsga?",
+    a: "Megfelelő gyakorlással és felkészüléssel sikeresen teljesíthető.",
   },
   {
-    q: "[Gyakorlati kérdés 6]",
-    a: "[Gyakorlati válasz 6]",
+    q: "Választhatok oktatót?",
+    a: "Igen, lehetőség van az oktatók közül választani a szabad helyek függvényében.",
   },
   {
     q: "[Gyakorlati kérdés 7]",
