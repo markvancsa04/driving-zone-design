@@ -106,7 +106,7 @@ export function Footer() {
 
         <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
           <p>© {new Date().getFullYear()} Driving Zone. {t.footer.rights}</p>
-          <p>[Készítette / Adatvédelem]</p>
+          <p>Adatvédelmi tájékoztató | Készítette:&nbsp;Driving Zone&nbsp;</p>
         </div>
       </div>
     </footer>
