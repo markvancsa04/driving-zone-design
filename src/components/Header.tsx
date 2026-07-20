@@ -74,10 +74,11 @@ export function Header() {
             <div className="flex flex-col gap-1 border-t border-border pt-4">
               {navItems.map((item) => (
                 <Link
-                  key={item.to}
+                  key={`${item.to}${item.hash ?? ""}`}
                   to={item.to}
+                  hash={item.hash}
                   onClick={() => setOpen(false)}
-                  activeOptions={{ exact: item.to === "/" }}
+                  activeOptions={{ exact: item.to === "/" && !item.hash }}
                   activeProps={{ className: "text-brand" }}
                   inactiveProps={{ className: "text-ink" }}
                   className="px-3 py-3 text-base font-medium rounded-xl hover:bg-secondary"
