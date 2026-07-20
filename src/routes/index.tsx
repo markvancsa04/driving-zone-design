@@ -73,7 +73,7 @@ function HomePage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeader
             eyebrow="Oktatók"
-            title="[Csapatunk]"
+            title="Csapatunk | Driving Zone"
             intro="[Rövid szöveg az oktatókról]"
           />
           <div className="grid gap-6 md:grid-cols-2">
