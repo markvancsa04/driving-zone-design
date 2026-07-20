@@ -36,9 +36,9 @@ const SERVICES = [
     price: "Egyedi ár",
   },
   {
-    category: "ELMÉLETI FELKÉSZÍTÉS",
-    title: "KRESZ tanfolyam",
-    description: "Intenzív elméleti felkészítés a sikeres hatósági vizsga érdekében, modern segédanyagokkal.",
+    category: "JOGOSÍTVÁNY VISSZASZERZÉSE",
+    title: "Bevont vagy annulált engedélyek",
+    description: "Ha nehéz helyzetbe kerültél, mi segítünk a legális és leggyorsabb visszatérésben az utakra.",
     price: "Egyedi ár",
   },
   {
