@@ -63,7 +63,7 @@ function ContactPage() {
           <div className="placeholder-frame aspect-[4/3] lg:aspect-[5/4] rounded-3xl overflow-hidden">
             <iframe
               title="Google Maps"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2770.8166579895083!2d26.1368925!3d46.0028135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b497f9c8f8d689%3A0x6b8d44e59c1c49c7!2zS8OlenZpdsOhc8OhcmhlbHksIFJvbWFuaWE!5e0!3m2!1sen!2shu!4v1715850000000!5m2!1sen!2shu"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2770.8166579895083!2d26.1389208!3d46.0009686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDbCsDAwJzAzLjUiTiAyNsKwMDgnMjAuMSJF!5e0!3m2!1sen!2shu!4v1715850000000!5m2!1sen!2shu"
               className="w-full h-full border-0"
               allowFullScreen
               loading="lazy"
