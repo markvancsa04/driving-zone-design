@@ -3,6 +3,7 @@ import { ArrowRight, Star, Car } from "lucide-react";
 import { ImagePlaceholder } from "@/components/Placeholder";
 import { Section, SectionHeader } from "@/components/Section";
 import { HeroSlider } from "@/components/HeroSlider";
+import instructorImageAsset from "@/assets/instructor-fleet.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({

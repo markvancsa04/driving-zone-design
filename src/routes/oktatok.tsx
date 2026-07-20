@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Section } from "@/components/Section";
 import { ImagePlaceholder } from "@/components/Placeholder";
+import instructorImageAsset from "@/assets/instructor-fleet.jpg.asset.json";
 
 export const Route = createFileRoute("/oktatok")({
   head: () => ({

@@ -3,16 +3,33 @@ import type { ReactNode } from "react";
 /**
  * Editable image placeholder. Replace by swapping this component with an <img>
  * or setting a background. Keep the same aspect ratio via `className`.
+ * When `src` is provided, the actual image is rendered instead of the placeholder.
  */
 export function ImagePlaceholder({
   label = "[Kép helye]",
   className = "aspect-[4/3]",
   children,
+  src,
+  alt,
 }: {
   label?: string;
   className?: string;
   children?: ReactNode;
+  src?: string;
+  alt?: string;
 }) {
+  if (src) {
+    return (
+      <div className={`overflow-hidden ${className}`}>
+        <img
+          src={src}
+          alt={alt || label}
+          className="h-full w-full object-cover"
+        />
+      </div>
+    );
+  }
+
   return (
     <div className={`placeholder-frame ${className}`}>
       <div className="flex flex-col items-center gap-1 text-center px-4">
