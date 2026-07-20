@@ -68,8 +68,8 @@ const theoreticalItems = [
     a: "A vizsga követelményeit teljesíteni kell a sikeres eredményhez.",
   },
   {
-    q: "[Elméleti kérdés 5]",
-    a: "[Elméleti válasz 5]",
+    q: "Mikor jelentkezhetek vizsgára?",
+    a: "Az előírt elméleti követelmények teljesítése után lehet vizsgára jelentkezni.",
   },
 ];
 
