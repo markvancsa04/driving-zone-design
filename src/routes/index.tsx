@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Star, Car } from "lucide-react";
+import { ArrowRight, Star, Car } from "lucide-react";
 import { ImagePlaceholder } from "@/components/Placeholder";
 import { Section, SectionHeader } from "@/components/Section";
 import { HeroSlider } from "@/components/HeroSlider";
