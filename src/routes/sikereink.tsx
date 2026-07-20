@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { PageHeader, Section } from "@/components/Section";
-import { ImagePlaceholder } from "@/components/Placeholder";
+
 import { GALLERY_IMAGES } from "@/lib/gallery-images";
 import { X } from "lucide-react";
 
