@@ -41,8 +41,8 @@ const practicalItems = [
     a: "Igen, lehetőség van az oktatók közül választani a szabad helyek függvényében.",
   },
   {
-    q: "[Gyakorlati kérdés 7]",
-    a: "[Gyakorlati válasz 7]",
+    q: "Hányszor vezessek egy héten?",
+    a: "A rendszeres órák segítik a gyorsabb fejlődést és a biztosabb tudást.",
   },
   {
     q: "[Gyakorlati kérdés 8]",
