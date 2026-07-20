@@ -27,7 +27,7 @@ export function Footer() {
           <div className="md:col-span-4 flex flex-col gap-4">
             <Logo className="h-14 w-auto" />
             <p className="text-sm text-muted-foreground max-w-xs">
-              A biztos vezetés itt kezdődik.
+              A biztos vezetés itt kezdődik.&nbsp;
             </p>
             <div className="flex gap-2 mt-2">
               {[
