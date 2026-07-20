@@ -90,15 +90,18 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-ink">
               <li className="flex gap-3">
                 <MapPin className="size-4 text-brand shrink-0 mt-0.5" />
-                <span>[Cím helye]</span>
+                <span>
+                  Kézdivásárhely<br />
+                  17.es Udvartér 1.es szám
+                </span>
               </li>
               <li className="flex gap-3">
                 <Phone className="size-4 text-brand shrink-0 mt-0.5" />
-                <span>[Telefonszám]</span>
+                <a href="tel:+40786585405" className="hover:text-brand transition-colors">0786 585 405</a>
               </li>
               <li className="flex gap-3">
                 <Mail className="size-4 text-brand shrink-0 mt-0.5" />
-                <span>[E-mail cím]</span>
+                <a href="mailto:drivingzonedrz@gmail.com" className="hover:text-brand transition-colors">drivingzonedrz@gmail.com</a>
               </li>
             </ul>
           </div>
