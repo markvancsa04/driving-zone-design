@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { PageHeader, Section } from "@/components/Section";
-import { ImagePlaceholder } from "@/components/Placeholder";
+
+import { GALLERY_IMAGES } from "@/lib/gallery-images";
 import { X } from "lucide-react";
 
 export const Route = createFileRoute("/sikereink")({
@@ -34,18 +35,18 @@ function WallPage() {
       />
       <Section>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
-          {Array.from({ length: 10 }).map((_, i) => (
+          {GALLERY_IMAGES.map((src, i) => (
             <button
-              key={i}
+              key={src}
               onClick={() => setOpen(i)}
-              className="group relative overflow-hidden rounded-3xl aspect-square focus:outline-none focus:ring-2 focus:ring-brand"
+              className="group relative overflow-hidden rounded-3xl aspect-square focus:outline-none focus:ring-2 focus:ring-brand bg-secondary"
             >
-              <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-105">
-                <ImagePlaceholder
-                  label={`[Siker ${i + 1}]`}
-                  className="w-full h-full rounded-3xl"
-                />
-              </div>
+              <img
+                src={src}
+                alt={`Driving Zone sikeres diák ${i + 1}`}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
               <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/10 transition-colors" />
             </button>
           ))}
@@ -64,10 +65,11 @@ function WallPage() {
           >
             <X className="size-5" />
           </button>
-          <div className="w-full max-w-3xl" onClick={(e) => e.stopPropagation()}>
-            <ImagePlaceholder
-              label={`[Siker ${open + 1} – nagyítva]`}
-              className="aspect-[4/3] rounded-3xl"
+          <div className="w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={GALLERY_IMAGES[open]}
+              alt={`Driving Zone sikeres diák ${open + 1}`}
+              className="w-full max-h-[85vh] object-contain rounded-3xl"
             />
           </div>
         </div>
