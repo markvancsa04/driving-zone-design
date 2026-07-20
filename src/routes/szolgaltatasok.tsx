@@ -17,9 +17,9 @@ export const Route = createFileRoute("/szolgaltatasok")({
 
 const SERVICES = [
   {
-    category: "B KATEGÓRIÁS JÁRMŰVEZETŐI TANFOLYAM",
-    title: "",
-    description: "",
+    category: "B KATEGÓRIA",
+    title: "B kategóriás járművezetői tanfolyam",
+    description: "Türelmes és tapasztalt oktatók, akik mellett élmény a tanulás.",
     price: "2400 RON-tól",
     badge: "Népszerű",
   },
@@ -62,13 +62,13 @@ function ServicesPage() {
           {SERVICES.map((service, i) => (
             <article key={i} className="card-lift rounded-3xl bg-card border border-border p-8 flex flex-col">
               <div className="text-xs font-semibold tracking-widest uppercase text-brand">
-                {i === 0 ? "[KATEGÓRI\u00A0B KATEGÓRIÁS JÁRMŰVEZETŐI TANFOLYAM" : service.category}
+                {service.category}
               </div>
               <h3 className="mt-2 text-2xl font-semibold text-ink">
-                {i === 0 ? "\n" : service.title}
+                {service.title}
               </h3>
               <p className="mt-3 text-sm text-muted-foreground flex-1 whitespace-pre-line">
-                {i === 0 ? "\n" : service.description}
+                {service.description}
               </p>
               <div className="mt-6 flex items-end justify-between gap-4">
                 <div>
