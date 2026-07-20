@@ -30,17 +30,38 @@ export function Footer() {
               A biztos vezetés itt kezdődik.
             </p>
             <div className="flex gap-2 mt-2">
-              <a href="https://www.facebook.com/soforsuli/?locale=hu_HU" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="h-10 w-10 grid place-items-center rounded-full border border-border text-ink hover:text-brand hover:border-brand transition">
-                <Facebook className="size-4" />
-              </a>
-              <a href="https://www.instagram.com/driving_zone_illes_autosiskola/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="h-10 w-10 grid place-items-center rounded-full border border-border text-ink hover:text-brand hover:border-brand transition">
-                <Instagram className="size-4" />
-              </a>
-              <a href="https://www.tiktok.com/@ills.auts.iskola" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="h-10 w-10 grid place-items-center rounded-full border border-border text-ink hover:text-brand hover:border-brand transition">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-4">
-                  <path d="M9 12a4 4 0 1 0 4 4V4c.5 2.5 2.5 4.5 5 5" />
-                </svg>
-              </a>
+              {[
+                {
+                  href: "https://www.facebook.com/soforsuli/?locale=hu_HU",
+                  label: "Facebook",
+                  icon: <Facebook className="size-4" />,
+                },
+                {
+                  href: "https://www.instagram.com/driving_zone_illes_autosiskola/",
+                  label: "Instagram",
+                  icon: <Instagram className="size-4" />,
+                },
+                {
+                  href: "https://www.tiktok.com/@ills.auts.iskola",
+                  label: "TikTok",
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-4">
+                      <path d="M9 12a4 4 0 1 0 4 4V4c.5 2.5 2.5 4.5 5 5" />
+                    </svg>
+                  ),
+                },
+              ].map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="h-10 w-10 grid place-items-center rounded-full border border-border text-ink hover:text-brand hover:border-brand transition"
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
 
