@@ -65,14 +65,14 @@ const REVIEWS = [
     text: "Nagyon türelmes oktatót kaptam, minden órán éreztem, hogy biztos kezekben vagyok, és sikerült magabiztosan levizsgáznom.",
   },
   {
-    name: "[Név]",
-    age: "[Év]",
-    text: "[Vélemény szövege]",
+    name: "Dudás Nóra",
+    age: "19 éeves",
+    text: "Nagyon pozitív élmény volt a tanulás, az oktatás során mindig kaptam hasznos tanácsokat és segítséget:)",
   },
   {
-    name: "[Név]",
-    age: "[Év]",
-    text: "[Vélemény szövege]",
+    name: "Barabás Csongi",
+    age: "18 éves",
+    text: "Rugalmas időpontokkal és jó hangulatú órákkal segítettek abban, hogy könnyebben elsajátítsam a vezetés alapjait.",
   },
 ];
 
