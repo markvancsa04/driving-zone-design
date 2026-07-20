@@ -71,9 +71,10 @@ export function Footer() {
             </h4>
             <ul className="grid grid-cols-2 gap-y-2 gap-x-4 text-sm">
               {links.map((l) => (
-                <li key={l.to}>
+                <li key={`${l.to}${l.hash ?? ""}`}>
                   <Link
                     to={l.to}
+                    hash={l.hash}
                     className="text-ink hover:text-brand transition-colors"
                   >
                     {t.nav[l.key]}
