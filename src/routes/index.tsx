@@ -58,6 +58,24 @@ const CARS = [
   },
 ];
 
+const REVIEWS = [
+  {
+    name: "Menyhárt Ákos",
+    age: "18 éves",
+    text: "Nagyon türelmes oktatót kaptam, minden órán éreztem, hogy biztos kezekben vagyok, és sikerült magabiztosan levizsgáznom.",
+  },
+  {
+    name: "[Név]",
+    age: "[Év]",
+    text: "[Vélemény szövege]",
+  },
+  {
+    name: "[Név]",
+    age: "[Év]",
+    text: "[Vélemény szövege]",
+  },
+];
+
 function HomePage() {
   return (
     <>
