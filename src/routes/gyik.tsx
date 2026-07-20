@@ -22,7 +22,7 @@ const practicalItems = [
   },
   {
     q: "Hány vezetési óra szükséges a vizsgához?",
-    a: "A kötelező óraszám jelenleg 30 óra, de ez egyéni fejlődéstől függően változhat.",
+    a: "A kötelező óraszám teljesítése szükséges, de a fejlődéstől függően több óra is ajánlott lehet.",
   },
   {
     q: "[Gyakorlati kérdés 3]",
