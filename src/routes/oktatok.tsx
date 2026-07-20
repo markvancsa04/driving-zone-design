@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Section } from "@/components/Section";
 import { ImagePlaceholder } from "@/components/Placeholder";
+import instructorImageAsset from "@/assets/instructor-fleet.jpg.asset.json";
 
 export const Route = createFileRoute("/oktatok")({
   head: () => ({
@@ -29,6 +30,8 @@ function InstructorsPage() {
               <ImagePlaceholder
                 label={`[Oktató ${i} fotó]`}
                 className="aspect-[4/5] rounded-none border-0 border-b border-border"
+                src={instructorImageAsset.url}
+                alt="Driving Zone oktató"
               />
               <div className="p-8">
                 <div className="text-xs font-semibold tracking-widest uppercase text-brand">

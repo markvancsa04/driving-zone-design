@@ -3,6 +3,7 @@ import { ArrowRight, Star, Car } from "lucide-react";
 import { ImagePlaceholder } from "@/components/Placeholder";
 import { Section, SectionHeader } from "@/components/Section";
 import { HeroSlider } from "@/components/HeroSlider";
+import instructorImageAsset from "@/assets/instructor-fleet.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -82,6 +83,8 @@ function HomePage() {
                 <ImagePlaceholder
                   label="[Oktató fotó]"
                   className="aspect-[16/10] rounded-none border-0 border-b border-border"
+                  src={instructorImageAsset.url}
+                  alt="Driving Zone oktatói"
                 />
                 <div className="p-8">
                   <h3 className="text-xl font-semibold text-ink">[Oktató neve]</h3>
