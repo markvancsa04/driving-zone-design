@@ -20,8 +20,8 @@ function InstructorsPage() {
     <>
       <PageHeader
         eyebrow="Oktatók"
-        title="[Csapatunk – főcím]"
-        intro="[Rövid bemutatkozás az oktatókról]"
+        title="Csapatunk | Driving Zone"
+        intro="Ismerd meg tapasztalt és türelmes oktatóinkat, akik segítenek a magabiztos vezetés elsajátításában."
       />
       <Section>
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
