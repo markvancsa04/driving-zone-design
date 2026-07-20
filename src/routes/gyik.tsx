@@ -64,8 +64,8 @@ const theoreticalItems = [
     a: "A szükséges tanórák teljesítése után jelentkezhetsz elméleti vizsgára.",
   },
   {
-    q: "[Elméleti kérdés 4]",
-    a: "[Elméleti válasz 4]",
+    q: "Hány hibát lehet véteni a KRESZ vizsgán?",
+    a: "A vizsga követelményeit teljesíteni kell a sikeres eredményhez.",
   },
   {
     q: "[Elméleti kérdés 5]",
