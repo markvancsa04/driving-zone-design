@@ -65,10 +65,11 @@ function WallPage() {
           >
             <X className="size-5" />
           </button>
-          <div className="w-full max-w-3xl" onClick={(e) => e.stopPropagation()}>
-            <ImagePlaceholder
-              label={`[Siker ${open + 1} – nagyítva]`}
-              className="aspect-[4/3] rounded-3xl"
+          <div className="w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={GALLERY_IMAGES[open]}
+              alt={`Driving Zone sikeres diák ${open + 1}`}
+              className="w-full max-h-[85vh] object-contain rounded-3xl"
             />
           </div>
         </div>
