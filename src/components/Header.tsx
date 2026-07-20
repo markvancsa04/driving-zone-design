@@ -4,15 +4,15 @@ import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { useI18n } from "@/i18n/context";
 
-const navItems = [
-  { to: "/", key: "home" as const },
-  { to: "/rolunk", key: "about" as const },
-  { to: "/szolgaltatasok", key: "services" as const },
-  { to: "/oktatok", key: "instructors" as const },
-  { to: "/", hash: "autok", key: "cars" as const },
-  { to: "/sikereink", key: "wall" as const },
-  { to: "/gyik", key: "faq" as const },
-  { to: "/kapcsolat", key: "contact" as const },
+const navItems: { to: string; hash?: string; key: "home" | "about" | "services" | "instructors" | "cars" | "wall" | "faq" | "contact" }[] = [
+  { to: "/", key: "home" },
+  { to: "/rolunk", key: "about" },
+  { to: "/szolgaltatasok", key: "services" },
+  { to: "/oktatok", key: "instructors" },
+  { to: "/", hash: "autok", key: "cars" },
+  { to: "/sikereink", key: "wall" },
+  { to: "/gyik", key: "faq" },
+  { to: "/kapcsolat", key: "contact" },
 ];
 
 export function Header() {
