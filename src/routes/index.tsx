@@ -135,11 +135,6 @@ function HomePage() {
             </article>
           ))}
         </div>
-        <div className="mt-10 flex justify-center">
-          <Link to="/autok" className="btn-ghost">
-            Összes autó <ArrowRight className="size-4" />
-          </Link>
-        </div>
       </Section>
 
       {/* WALL OF FAME PREVIEW */}
