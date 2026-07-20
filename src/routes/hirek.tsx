@@ -33,9 +33,10 @@ function NewsPage() {
               Itt találja legfrissebb híreinket és az aktuális információkat.
             </p>
             <a
-              href="#"
+              href="https://maszol.ro/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-brand mt-8"
-              // TODO: cseréld le a valódi URL-re
             >
               Hírfolyam <ArrowRight className="size-4" />
             </a>
