@@ -44,9 +44,10 @@ export function Header() {
           <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <Link
-                key={item.to}
+                key={`${item.to}${item.hash ?? ""}`}
                 to={item.to}
-                activeOptions={{ exact: item.to === "/" }}
+                hash={item.hash}
+                activeOptions={{ exact: item.to === "/" && !item.hash }}
                 activeProps={{ className: "text-brand" }}
                 inactiveProps={{ className: "text-ink hover:text-brand" }}
                 className="px-3 py-2 text-sm font-medium transition-colors rounded-full"
