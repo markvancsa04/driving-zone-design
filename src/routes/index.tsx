@@ -118,8 +118,8 @@ function HomePage() {
       <Section>
         <SectionHeader
           eyebrow="Autópark"
-          title="[Modern flottánk]"
-          intro="[Rövid szöveg az autókról]"
+          title="Modern autóink | Driving Zone"
+          intro="Modern és kényelmes autóinkkal a vezetés tanulása egyszerűbb és magabiztosabb."
         />
         <div className="grid gap-6 md:grid-cols-2">
           {[1, 2].map((i) => (
