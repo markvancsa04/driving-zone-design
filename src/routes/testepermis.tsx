@@ -5,10 +5,10 @@ import { ArrowRight, GraduationCap } from "lucide-react";
 export const Route = createFileRoute("/testepermis")({
   head: () => ({
     meta: [
-      { title: "TestePermis – Driving Zone" },
-      { name: "description", content: "Gyakorolj a hivatalos elméleti tesztkérdésekkel." },
-      { property: "og:title", content: "TestePermis – Driving Zone" },
-      { property: "og:description", content: "Ugorj tovább a TestePermis platformra." },
+      { title: "Online tesztek | Driving Zone" },
+      { name: "description", content: "Gyakorolj a hivatalos elméleti tesztkérdésekkel és készülj fel a sikeres vizsgára." },
+      { property: "og:title", content: "Online tesztek | Driving Zone" },
+      { property: "og:description", content: "Gyakorolj a hivatalos elméleti tesztkérdésekkel a TestePermis segítségével." },
     ],
   }),
   component: TestePermisPage,
