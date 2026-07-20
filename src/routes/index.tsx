@@ -126,7 +126,7 @@ function HomePage() {
       </Section>
 
       {/* CARS PREVIEW */}
-      <Section>
+      <Section id="autok">
         <SectionHeader
           eyebrow="Autópark"
           title="Modern autóink | Driving Zone"
