@@ -52,8 +52,8 @@ const practicalItems = [
 
 const theoreticalItems = [
   {
-    q: "[Elméleti kérdés 1]",
-    a: "[Elméleti válasz 1]",
+    q: "Hol tanulhatom meg a KRESZ-t?",
+    a: "Az elméleti oktatáson megtanulod a közlekedési szabályokat és a biztonságos vezetés alapjait.",
   },
   {
     q: "[Elméleti kérdés 2]",
