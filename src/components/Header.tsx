@@ -9,7 +9,7 @@ const navItems = [
   { to: "/rolunk", key: "about" as const },
   { to: "/szolgaltatasok", key: "services" as const },
   { to: "/oktatok", key: "instructors" as const },
-  { to: "/autok", key: "cars" as const },
+  { to: "/", hash: "autok", key: "cars" as const },
   { to: "/sikereink", key: "wall" as const },
   { to: "/gyik", key: "faq" as const },
   { to: "/kapcsolat", key: "contact" as const },
