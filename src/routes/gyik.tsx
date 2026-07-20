@@ -25,8 +25,8 @@ const practicalItems = [
     a: "A kötelező óraszám teljesítése szükséges, de a fejlődéstől függően több óra is ajánlott lehet.",
   },
   {
-    q: "[Gyakorlati kérdés 3]",
-    a: "[Gyakorlati válasz 3]",
+    q: "Mi történik az első vezetési órán?",
+    a: "Megismerkedsz az autóval, az alapkezeléssel és az első vezetési feladatokkal.",
   },
   {
     q: "[Gyakorlati kérdés 4]",
