@@ -41,9 +41,6 @@ function InstructorsPage() {
                 <p className="mt-3 text-sm text-muted-foreground">
                   [Rövid bemutatkozás – 2–3 mondat]
                 </p>
-                <button className="mt-6 text-sm font-semibold text-brand hover:underline">
-                  További információ →
-                </button>
               </div>
             </article>
           ))}
