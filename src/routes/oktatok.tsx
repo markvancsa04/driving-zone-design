@@ -32,14 +32,14 @@ const INSTRUCTORS = [
     description: "Világjáró tapasztalat és magas szintű kommunikáció: Lóránd Kolozsváron végzett egyetemet, majd éveken át Angliában élt és dolgozott. Az ott szerzett tapasztalatok, a precizitás és a nemzetközi szemlélet mind hozzájárulnak ahhoz, hogy a legmagasabb színvonalon, végtelenül professzionálisan oktasson – nálunk akár idegen nyelven is!"
   },
   {
-    name: "[Oktató neve]",
-    role: "[Szerepkör]",
-    description: "[Rövid bemutatkozás – 2–3 mondat]"
+    name: "Szima Csilla",
+    role: "ELMÉLETI OKTATÓ",
+    description: "Pedagógus a hivatásban és a volán mögött is: Csilla főállásban a kézdivásárhelyi Molnár Józsiás Gimnáziumban (Általános Iskolában) tanít. Professzionális pedagógiai módszertanának köszönhetően a legbonyolultabb elsőbbségadási szabályokat és jogszabályokat is úgy tudja elmagyarázni, hogy az azonnal érthetővé és logikussá válik."
   },
   {
-    name: "[Oktató neve]",
-    role: "[Szerepkör]",
-    description: "[Rövid bemutatkozás – 2–3 mondat]"
+    name: "Molnár Barbara",
+    role: "\u00a0TITKÁRNŐ",
+    description: "Fiatalos és lendületes: Mindig pozitív energiával fogad, és segít, hogy már az első lépésektől otthonosan érezd magad nálunk. Rendkívül empatikus: Pontosan tudja, hogy a vizsgák előtt mindenki izgul. Bármilyen kérdésed vagy kétséged van, hozzá bátran fordulhatsz – megértéssel és bátorítással fogad."
   }
 ];
 
