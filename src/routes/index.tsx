@@ -37,12 +37,12 @@ const SERVICES = [
 
 const FEATURED_INSTRUCTORS = [
   {
-    name: "Balint - tulajdonos, menedzser és oktató",
+    name: "Bálint - tulajdonos, menedzser és oktató",
     intro: "Ismerd meg az iskola vezetőjét.",
   },
   {
-    name: "[Oktató neve]",
-    intro: "[Rövid bemutatkozás]",
+    name: "Illés László - az iskola szülőatyja",
+    intro: "Ismerd meg alapítónkat és mentorunkat.",
   },
 ];
 
