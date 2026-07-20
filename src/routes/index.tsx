@@ -210,7 +210,7 @@ function HomePage() {
                 ))}
               </div>
               <p className="text-sm text-ink leading-relaxed">
-                „{review.text}"
+                {review.text}
               </p>
               <div className="mt-6">
                 <div className="text-sm font-semibold text-ink">{review.name}</div>
