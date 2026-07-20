@@ -45,8 +45,8 @@ const practicalItems = [
     a: "A rendszeres órák segítik a gyorsabb fejlődést és a biztosabb tudást.",
   },
   {
-    q: "[Gyakorlati kérdés 8]",
-    a: "[Gyakorlati válasz 8]",
+    q: "Mi történik, ha hibázok vezetés közben?",
+    a: "Az oktató segít kijavítani a hibákat és biztonságosan fejlődni.",
   },
 ];
 
