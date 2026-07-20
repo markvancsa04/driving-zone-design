@@ -158,11 +158,13 @@ function HomePage() {
             intro="[Rövid szöveg a sikerekről]"
           />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4].map((i) => (
+            {GALLERY_IMAGES.slice(0, 4).map((src, i) => (
               <ImagePlaceholder
-                key={i}
-                label={`[Siker ${i}]`}
-                className="aspect-square"
+                key={src}
+                label={`Siker ${i + 1}`}
+                className="aspect-square rounded-3xl"
+                src={src}
+                alt={`Driving Zone sikeres diák ${i + 1}`}
               />
             ))}
           </div>
