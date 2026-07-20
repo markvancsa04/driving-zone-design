@@ -42,10 +42,10 @@ const SERVICES = [
     price: "Egyedi ár",
   },
   {
-    category: "VIZSGÁRA BOCSÁTÁS",
-    title: "Pótóra és vizsga",
-    description: "Kiegészítő órák és az oktatóautó biztosítása a forgalmi vizsga időpontjára.",
-    price: "200 RON",
+    category: "ALTERNATÍV MOBILITÁS TANFOLYAM",
+    title: "Roller és kerékpár törvényes használata",
+    description: "Rövid felkészítő tanfolyam a rollerek és kerékpárok biztonságos és szabályos utcai használatáról.",
+    price: "200 Ron, Minim 5 fős csoportnak 150 Ron/fő",
   },
 ];
 
