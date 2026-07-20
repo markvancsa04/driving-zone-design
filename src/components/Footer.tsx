@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Tiktok, MapPin, Phone, Mail } from "lucide-react";
+import { Facebook, Instagram, MapPin, Phone, Mail } from "lucide-react";
 import { Logo } from "./Logo";
 import { useI18n } from "@/i18n/context";
 
@@ -37,7 +37,9 @@ export function Footer() {
                 <Instagram className="size-4" />
               </a>
               <a href="https://www.tiktok.com/@ills.auts.iskola" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="h-10 w-10 grid place-items-center rounded-full border border-border text-ink hover:text-brand hover:border-brand transition">
-                <Tiktok className="size-4" />
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-4">
+                  <path d="M9 12a4 4 0 1 0 4 4V4c.5 2.5 2.5 4.5 5 5" />
+                </svg>
               </a>
             </div>
           </div>
