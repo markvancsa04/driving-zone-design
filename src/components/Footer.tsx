@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, Youtube, MapPin, Phone, Mail } from "lucide-react";
+import { Facebook, Instagram, TikTok, MapPin, Phone, Mail } from "lucide-react";
 import { Logo } from "./Logo";
 import { useI18n } from "@/i18n/context";
 
@@ -30,14 +30,14 @@ export function Footer() {
               A biztos vezetés itt kezdődik.
             </p>
             <div className="flex gap-2 mt-2">
-              <a href="#" aria-label="Facebook" className="h-10 w-10 grid place-items-center rounded-full border border-border text-ink hover:text-brand hover:border-brand transition">
+              <a href="https://www.facebook.com/soforsuli/?locale=hu_HU" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="h-10 w-10 grid place-items-center rounded-full border border-border text-ink hover:text-brand hover:border-brand transition">
                 <Facebook className="size-4" />
               </a>
-              <a href="#" aria-label="Instagram" className="h-10 w-10 grid place-items-center rounded-full border border-border text-ink hover:text-brand hover:border-brand transition">
+              <a href="https://www.instagram.com/driving_zone_illes_autosiskola/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="h-10 w-10 grid place-items-center rounded-full border border-border text-ink hover:text-brand hover:border-brand transition">
                 <Instagram className="size-4" />
               </a>
-              <a href="#" aria-label="YouTube" className="h-10 w-10 grid place-items-center rounded-full border border-border text-ink hover:text-brand hover:border-brand transition">
-                <Youtube className="size-4" />
+              <a href="https://www.tiktok.com/@ills.auts.iskola" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="h-10 w-10 grid place-items-center rounded-full border border-border text-ink hover:text-brand hover:border-brand transition">
+                <TikTok className="size-4" />
               </a>
             </div>
           </div>
