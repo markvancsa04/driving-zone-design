@@ -30,8 +30,8 @@ function WallPage() {
     <>
       <PageHeader
         eyebrow="Wall of Fame"
-        title="[Sikereink – főcím]"
-        intro="[Rövid szöveg – diákjaink sikerei]"
+        title="Eredményeink | Driving Zone"
+        intro="Tekintse meg korábbi munkáinkat és a közösen elért sikereinket."
       />
       <Section>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
