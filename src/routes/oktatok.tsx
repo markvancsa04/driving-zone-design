@@ -30,6 +30,16 @@ const INSTRUCTORS = [
     name: "Csüdör Lóránd",
     role: "GYAKORLATI OKTATÓ",
     description: "Világjáró tapasztalat és magas szintű kommunikáció: Lóránd Kolozsváron végzett egyetemet, majd éveken át Angliában élt és dolgozott. Az ott szerzett tapasztalatok, a precizitás és a nemzetközi szemlélet mind hozzájárulnak ahhoz, hogy a legmagasabb színvonalon, végtelenül professzionálisan oktasson – nálunk akár idegen nyelven is!"
+  },
+  {
+    name: "[Oktató neve]",
+    role: "[Szerepkör]",
+    description: "[Rövid bemutatkozás – 2–3 mondat]"
+  },
+  {
+    name: "[Oktató neve]",
+    role: "[Szerepkör]",
+    description: "[Rövid bemutatkozás – 2–3 mondat]"
   }
 ];
 
