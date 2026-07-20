@@ -58,6 +58,24 @@ const CARS = [
   },
 ];
 
+const REVIEWS = [
+  {
+    name: "Menyhárt Ákos",
+    age: "18 éves",
+    text: "Nagyon türelmes oktatót kaptam, minden órán éreztem, hogy biztos kezekben vagyok, és sikerült magabiztosan levizsgáznom.",
+  },
+  {
+    name: "[Név]",
+    age: "[Év]",
+    text: "[Vélemény szövege]",
+  },
+  {
+    name: "[Név]",
+    age: "[Év]",
+    text: "[Vélemény szövege]",
+  },
+];
+
 function HomePage() {
   return (
     <>
@@ -184,7 +202,7 @@ function HomePage() {
           intro="Valódi vélemények azoktól, akik már minket választottak."
         />
         <div className="grid gap-6 md:grid-cols-3">
-          {[1, 2, 3].map((i) => (
+          {REVIEWS.map((review, i) => (
             <article key={i} className="card-lift rounded-3xl border border-border bg-card p-8">
               <div className="flex gap-1 text-brand mb-4">
                 {Array.from({ length: 5 }).map((_, k) => (
@@ -192,13 +210,13 @@ function HomePage() {
                 ))}
               </div>
               <p className="text-sm text-ink leading-relaxed">
-                „[Vélemény szövege]"
+                „{review.text}"
               </p>
               <div className="mt-6 flex items-center gap-3">
                 <div className="h-10 w-10 rounded-full bg-secondary" />
                 <div>
-                  <div className="text-sm font-semibold text-ink">[Név]</div>
-                  <div className="text-xs text-muted-foreground">[Év]</div>
+                  <div className="text-sm font-semibold text-ink">{review.name}</div>
+                  <div className="text-xs text-muted-foreground">{review.age}</div>
                 </div>
               </div>
             </article>
