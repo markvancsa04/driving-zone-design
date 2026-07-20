@@ -8,7 +8,6 @@ const paths = [
   "/rolunk",
   "/szolgaltatasok",
   "/oktatok",
-  "/autok",
   "/sikereink",
   "/jelentkezes",
   "/gyik",
