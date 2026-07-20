@@ -27,7 +27,7 @@ export function Footer() {
           <div className="md:col-span-4 flex flex-col gap-4">
             <Logo className="h-14 w-auto" />
             <p className="text-sm text-muted-foreground max-w-xs">
-              [Rövid szlogen a Driving Zone-ról]
+              A biztos vezetés itt kezdődik.
             </p>
             <div className="flex gap-2 mt-2">
               <a href="#" aria-label="Facebook" className="h-10 w-10 grid place-items-center rounded-full border border-border text-ink hover:text-brand hover:border-brand transition">
