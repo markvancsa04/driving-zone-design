@@ -35,18 +35,18 @@ function WallPage() {
       />
       <Section>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
-          {Array.from({ length: 10 }).map((_, i) => (
+          {GALLERY_IMAGES.map((src, i) => (
             <button
-              key={i}
+              key={src}
               onClick={() => setOpen(i)}
-              className="group relative overflow-hidden rounded-3xl aspect-square focus:outline-none focus:ring-2 focus:ring-brand"
+              className="group relative overflow-hidden rounded-3xl aspect-square focus:outline-none focus:ring-2 focus:ring-brand bg-secondary"
             >
-              <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-105">
-                <ImagePlaceholder
-                  label={`[Siker ${i + 1}]`}
-                  className="w-full h-full rounded-3xl"
-                />
-              </div>
+              <img
+                src={src}
+                alt={`Driving Zone sikeres diák ${i + 1}`}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
               <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/10 transition-colors" />
             </button>
           ))}
