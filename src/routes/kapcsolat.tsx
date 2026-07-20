@@ -76,7 +76,7 @@ function ContactPage() {
   );
 }
 
-function Card({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+function Card({ icon, label, value }: { icon: React.ReactNode; label: string; value: React.ReactNode }) {
   return (
     <div className="card-lift rounded-2xl border border-border bg-card p-6">
       <div className="h-11 w-11 rounded-2xl bg-brand-soft grid place-items-center text-brand mb-4">
