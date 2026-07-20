@@ -29,8 +29,8 @@ const practicalItems = [
     a: "Megismerkedsz az autóval, az alapkezeléssel és az első vezetési feladatokkal.",
   },
   {
-    q: "[Gyakorlati kérdés 4]",
-    a: "[Gyakorlati válasz 4]",
+    q: "Mi van, ha még soha nem vezettem?",
+    a: "Semmi probléma, az oktató lépésről lépésre megtanít minden alapot.",
   },
   {
     q: "[Gyakorlati kérdés 5]",
