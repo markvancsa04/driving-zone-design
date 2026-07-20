@@ -16,13 +16,13 @@ export const Route = createFileRoute("/kapcsolat")({
 
 function ContactPage() {
   const openingHours = [
-    "Hétfő: 8:00 – 16:00",
-    "Kedd: 8:00 – 16:00",
-    "Szerda: 8:00 – 16:00",
-    "Csütörtök: 8:00 – 16:00",
-    "Péntek: 8:00 – 16:00",
-    "Szombat: Zárva",
-    "Vasárnap: Zárva"
+    "hétfő, 8:00–16:00",
+    "kedd, 8:00–16:00",
+    "szerda, 8:00–16:00",
+    "csütörtök, 8:00–16:00",
+    "péntek, 8:00–16:00",
+    "szombat, Zárva",
+    "vasárnap, Zárva"
   ];
 
   return (
