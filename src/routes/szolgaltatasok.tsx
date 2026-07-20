@@ -17,9 +17,9 @@ export const Route = createFileRoute("/szolgaltatasok")({
 
 const SERVICES = [
   {
-    category: "B KATEGÓRIÁS JÁRMŰVEZETŐI TANFOLYAM",
-    title: "",
-    description: "",
+    category: "B KATEGÓRIA",
+    title: "B kategóriás járművezetői tanfolyam",
+    description: "Türelmes és tapasztalt oktatók, akik mellett élmény a tanulás.",
     price: "2400 RON-tól",
     badge: "Népszerű",
   },
