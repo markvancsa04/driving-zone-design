@@ -74,7 +74,7 @@ function HomePage() {
           <SectionHeader
             eyebrow="Oktatók"
             title="Csapatunk | Driving Zone"
-            intro="[Rövid szöveg az oktatókról]"
+            intro="Tapasztalt és türelmes oktatóink segítenek, hogy magabiztos vezetővé válj."
           />
           <div className="grid gap-6 md:grid-cols-2">
             {[1, 2].map((i) => (
