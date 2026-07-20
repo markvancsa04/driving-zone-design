@@ -15,15 +15,63 @@ export const Route = createFileRoute("/gyik")({
   component: FAQPage,
 });
 
-const practicalItems = Array.from({ length: 8 }).map((_, i) => ({
-  q: `[Gyakorlati kérdés ${i + 1}]`,
-  a: `[Gyakorlati válasz ${i + 1}]`,
-}));
+const practicalItems = [
+  {
+    q: "Mikor kezdhetem a vezetési órákat?",
+    a: "Az elméleti feltételek teljesítése után elkezdheted a gyakorlati oktatást.",
+  },
+  {
+    q: "Hány vezetési óra szükséges a vizsgához?",
+    a: "A kötelező óraszám jelenleg 30 óra, de ez egyéni fejlődéstől függően változhat.",
+  },
+  {
+    q: "[Gyakorlati kérdés 3]",
+    a: "[Gyakorlati válasz 3]",
+  },
+  {
+    q: "[Gyakorlati kérdés 4]",
+    a: "[Gyakorlati válasz 4]",
+  },
+  {
+    q: "[Gyakorlati kérdés 5]",
+    a: "[Gyakorlati válasz 5]",
+  },
+  {
+    q: "[Gyakorlati kérdés 6]",
+    a: "[Gyakorlati válasz 6]",
+  },
+  {
+    q: "[Gyakorlati kérdés 7]",
+    a: "[Gyakorlati válasz 7]",
+  },
+  {
+    q: "[Gyakorlati kérdés 8]",
+    a: "[Gyakorlati válasz 8]",
+  },
+];
 
-const theoreticalItems = Array.from({ length: 5 }).map((_, i) => ({
-  q: `[Elméleti kérdés ${i + 1}]`,
-  a: `[Elméleti válasz ${i + 1}]`,
-}));
+const theoreticalItems = [
+  {
+    q: "[Elméleti kérdés 1]",
+    a: "[Elméleti válasz 1]",
+  },
+  {
+    q: "[Elméleti kérdés 2]",
+    a: "[Elméleti válasz 2]",
+  },
+  {
+    q: "[Elméleti kérdés 3]",
+    a: "[Elméleti válasz 3]",
+  },
+  {
+    q: "[Elméleti kérdés 4]",
+    a: "[Elméleti válasz 4]",
+  },
+  {
+    q: "[Elméleti kérdés 5]",
+    a: "[Elméleti válasz 5]",
+  },
+];
 
 function FAQPage() {
   const [openPractical, setOpenPractical] = useState<number | null>(0);
