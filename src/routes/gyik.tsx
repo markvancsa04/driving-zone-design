@@ -60,8 +60,8 @@ const theoreticalItems = [
     a: "Rendszeres tanulással és gyakorló tesztekkel sikeresen teljesíthető.",
   },
   {
-    q: "[Elméleti kérdés 3]",
-    a: "[Elméleti válasz 3]",
+    q: "Mennyi ideig tart az elméleti képzés?",
+    a: "A szükséges tanórák teljesítése után jelentkezhetsz elméleti vizsgára.",
   },
   {
     q: "[Elméleti kérdés 4]",
