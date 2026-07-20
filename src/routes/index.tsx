@@ -180,8 +180,8 @@ function HomePage() {
       <Section>
         <SectionHeader
           eyebrow="Vélemények"
-          title="[Mit mondanak rólunk]"
-          intro="[Rövid szöveg a véleményekhez]"
+          title="Ügyfeleink mondták | Driving Zone"
+          intro="Valódi vélemények azoktól, akik már minket választottak."
         />
         <div className="grid gap-6 md:grid-cols-3">
           {[1, 2, 3].map((i) => (
