@@ -35,6 +35,17 @@ const SERVICES = [
   },
 ];
 
+const FEATURED_INSTRUCTORS = [
+  {
+    name: "Balint - tulajdonos, menedzser és oktató",
+    intro: "Ismerd meg az iskola vezetőjét.",
+  },
+  {
+    name: "[Oktató neve]",
+    intro: "[Rövid bemutatkozás]",
+  },
+];
+
 function HomePage() {
   return (
     <>
@@ -78,8 +89,8 @@ function HomePage() {
             intro="Tapasztalt és türelmes oktatóink segítenek, hogy magabiztos vezetővé válj."
           />
           <div className="grid gap-6 md:grid-cols-2">
-            {[1, 2].map((i) => (
-              <article key={i} className="card-lift rounded-3xl overflow-hidden bg-card border border-border">
+            {FEATURED_INSTRUCTORS.map((instructor, index) => (
+              <article key={index} className="card-lift rounded-3xl overflow-hidden bg-card border border-border">
                 <ImagePlaceholder
                   label="[Oktató fotó]"
                   className="aspect-[16/10] rounded-none border-0 border-b border-border"
@@ -87,9 +98,9 @@ function HomePage() {
                   alt="Driving Zone oktatói"
                 />
                 <div className="p-8">
-                  <h3 className="text-xl font-semibold text-ink">[Oktató neve]</h3>
+                  <h3 className="text-xl font-semibold text-ink">{instructor.name}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    [Rövid bemutatkozás]
+                    {instructor.intro}
                   </p>
                 </div>
               </article>
