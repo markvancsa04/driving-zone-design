@@ -20,8 +20,8 @@ function AboutPage() {
     <>
       <PageHeader
         eyebrow="Rólunk"
-        title="[Rólunk – főcím]"
-        intro="[Alcím / rövid bemutatkozás]"
+        title="Driving Zone&nbsp; Autósiskola"
+        intro="Ismerd meg a Driving Zone csapatát!"
       />
       <Section>
         <div className="grid gap-16 lg:grid-cols-12 items-start">
