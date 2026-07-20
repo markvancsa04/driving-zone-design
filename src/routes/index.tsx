@@ -46,6 +46,17 @@ const FEATURED_INSTRUCTORS = [
   },
 ];
 
+const CARS = [
+  {
+    model: "Skoda Fabia (2022)",
+    description: "Egy rendkívül barátságos, kiválóan manőverezhető és könnyen kezelhető autó, amely tökéletes partner a városi forgalom és a parkolási feladatok magabiztos elsajátításához.",
+  },
+  {
+    model: "Seat Ibiza 2022",
+    description: "Dinamikus, modern és végtelenül kényelmes kompakt autó, amely a legújabb biztonsági rendszereivel és könnyed vezethetőségével azonnal meghozza a kedved a vezetéshez.",
+  },
+];
+
 function HomePage() {
   return (
     <>
@@ -122,15 +133,15 @@ function HomePage() {
           intro="Modern és kényelmes autóinkkal a vezetés tanulása egyszerűbb és magabiztosabb."
         />
         <div className="grid gap-6 md:grid-cols-2">
-          {[1, 2].map((i) => (
-            <article key={i} className="card-lift rounded-3xl overflow-hidden bg-card border border-border">
+          {CARS.map((car, index) => (
+            <article key={index} className="card-lift rounded-3xl overflow-hidden bg-card border border-border">
               <ImagePlaceholder
                 label="[Autó fotó]"
                 className="aspect-[16/10] rounded-none border-0 border-b border-border"
               />
               <div className="p-8">
-                <h3 className="text-xl font-semibold text-ink">[Autó modell]</h3>
-                <p className="mt-2 text-sm text-muted-foreground">[Rövid leírás]</p>
+                <h3 className="text-xl font-semibold text-ink">{car.model}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{car.description}</p>
               </div>
             </article>
           ))}
