@@ -212,12 +212,9 @@ function HomePage() {
               <p className="text-sm text-ink leading-relaxed">
                 „{review.text}"
               </p>
-              <div className="mt-6 flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-secondary" />
-                <div>
-                  <div className="text-sm font-semibold text-ink">{review.name}</div>
-                  <div className="text-xs text-muted-foreground">{review.age}</div>
-                </div>
+              <div className="mt-6">
+                <div className="text-sm font-semibold text-ink">{review.name}</div>
+                <div className="text-xs text-muted-foreground">{review.age}</div>
               </div>
             </article>
           ))}
