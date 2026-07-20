@@ -39,7 +39,7 @@ const SERVICES = [
     category: "ELMÉLETI FELKÉSZÍTÉS",
     title: "KRESZ tanfolyam",
     description: "Intenzív elméleti felkészítés a sikeres hatósági vizsga érdekében, modern segédanyagokkal.",
-    price: "300 RON",
+    price: "Egyedi ár",
   },
   {
     category: "VIZSGÁRA BOCSÁTÁS",
