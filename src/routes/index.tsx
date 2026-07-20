@@ -4,6 +4,7 @@ import { ImagePlaceholder } from "@/components/Placeholder";
 import { Section, SectionHeader } from "@/components/Section";
 import { HeroSlider } from "@/components/HeroSlider";
 import instructorImageAsset from "@/assets/instructor-fleet.jpg.asset.json";
+import { GALLERY_IMAGES } from "@/lib/gallery-images";
 
 export const Route = createFileRoute("/")({
   head: () => ({
