@@ -56,8 +56,8 @@ const theoreticalItems = [
     a: "Az elméleti oktatáson megtanulod a közlekedési szabályokat és a biztonságos vezetés alapjait.",
   },
   {
-    q: "[Elméleti kérdés 2]",
-    a: "[Elméleti válasz 2]",
+    q: "Nehéz a KRESZ vizsga?",
+    a: "Rendszeres tanulással és gyakorló tesztekkel sikeresen teljesíthető.",
   },
   {
     q: "[Elméleti kérdés 3]",
