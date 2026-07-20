@@ -17,16 +17,20 @@ export const Route = createFileRoute("/hirek")({
 function NewsPage() {
   return (
     <>
-      <PageHeader eyebrow="Hírek" title="[Hírek – főcím]" intro="[Rövid bevezető]" />
+      <PageHeader
+        eyebrow="Hírek"
+        title="Friss hírek | Driving Zone"
+        intro="Értesüljön legújabb információinkról, változásainkról és fontos újdonságainkról."
+      />
       <Section>
         <div className="max-w-2xl mx-auto">
           <article className="card-lift rounded-3xl border border-border bg-card p-10 md:p-14 text-center">
             <div className="h-14 w-14 mx-auto rounded-2xl bg-brand-soft grid place-items-center text-brand">
               <Newspaper className="size-6" />
             </div>
-            <h2 className="mt-6 text-3xl font-semibold text-ink">[Hír címe]</h2>
+            <h2 className="mt-6 text-3xl font-semibold text-ink">Ujdonságok</h2>
             <p className="mt-4 text-muted-foreground">
-              [Rövid leírás a hírfolyamról]
+              Itt találja legfrissebb híreinket és az aktuális információkat.
             </p>
             <a
               href="#"
