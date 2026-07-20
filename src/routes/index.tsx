@@ -83,6 +83,8 @@ function HomePage() {
                 <ImagePlaceholder
                   label="[Oktató fotó]"
                   className="aspect-[16/10] rounded-none border-0 border-b border-border"
+                  src={instructorImageAsset.url}
+                  alt="Driving Zone oktatói"
                 />
                 <div className="p-8">
                   <h3 className="text-xl font-semibold text-ink">[Oktató neve]</h3>

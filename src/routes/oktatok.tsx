@@ -30,6 +30,8 @@ function InstructorsPage() {
               <ImagePlaceholder
                 label={`[Oktató ${i} fotó]`}
                 className="aspect-[4/5] rounded-none border-0 border-b border-border"
+                src={instructorImageAsset.url}
+                alt="Driving Zone oktató"
               />
               <div className="p-8">
                 <div className="text-xs font-semibold tracking-widest uppercase text-brand">
