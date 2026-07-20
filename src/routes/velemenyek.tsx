@@ -23,8 +23,8 @@ const REVIEWS = [
   },
   {
     name: "Dudás Nóra",
-    age: "19 éeves",
-    text: "Nagyon pozitív élmény volt a tanulás, az oktatás során mindig kaptam hasznos tanázatokat és segítséget:)",
+    age: "19 éves",
+    text: "Nagyon pozitív élmény volt a tanulás, az oktatás során mindig kaptam hasznos tanácsokat és segítséget:)",
   },
   {
     name: "Barabás Csongi",
@@ -32,19 +32,19 @@ const REVIEWS = [
     text: "Rugalmas időpontokkal és jó hangulatú órákkal segítettek abban, hogy könnyebben elsajátítsam a vezetés alapjait.",
   },
   {
-    name: "[Név]",
-    age: "[Év]",
-    text: "[Vélemény szövege]",
+    name: "Todor Zalán",
+    age: "18 éves",
+    text: "Kezdőként vágtam bele, de az órák során fokozatosan megszerettem a vezetést és felkészülten mentem a vizsgára.",
   },
   {
-    name: "[Név]",
-    age: "[Év]",
-    text: "[Vélemény szövege]",
+    name: "Keresztes Noémi",
+    age: "18 éves",
+    text: "Türelmes és érthető magyarázatokat kaptam, aminek köszönhetően sokkal magabiztosabban ültem a volán mögé.",
   },
   {
-    name: "[Név]",
-    age: "[Év]",
-    text: "[Vélemény szövege]",
+    name: "Deme Katinka",
+    age: "18 éves",
+    text: "Örülök, hogy ezt az autósiskolát választottam, minden óra közelebb vitt a sikeres vizsgához:)",
   },
 ];
 
