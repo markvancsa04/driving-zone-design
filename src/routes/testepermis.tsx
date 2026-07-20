@@ -17,7 +17,7 @@ export const Route = createFileRoute("/testepermis")({
 function TestePermisPage() {
   return (
     <>
-      <PageHeader eyebrow="TestePermis" title="[TestePermis – főcím]" intro="[Rövid bevezető]" />
+      <PageHeader eyebrow="TestePermis" title="Online tesztek | Driving Zone" intro="Ellenőrizd tudásod valódi vizsgakérdésekkel." />
       <Section>
         <div className="max-w-3xl mx-auto">
           <article className="rounded-3xl border border-border bg-gradient-to-br from-secondary/60 to-background p-10 md:p-16 shadow-soft text-center">
@@ -25,10 +25,10 @@ function TestePermisPage() {
               <GraduationCap className="size-7" />
             </div>
             <h2 className="mt-6 text-4xl md:text-5xl font-semibold text-ink">
-              [TestePermis – cím]
+              Permis teszt
             </h2>
             <p className="mt-5 text-lg text-muted-foreground max-w-xl mx-auto">
-              [Rövid leírás – gyakorolj a hivatalos tesztkérdésekkel]
+              Gyakorló kérdések a sikeres elméleti vizsgához.
             </p>
             <a href="#" className="btn-brand mt-10 text-base px-8 py-4">
               TestePermis <ArrowRight className="size-4" />
