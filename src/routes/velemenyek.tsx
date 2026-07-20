@@ -31,6 +31,21 @@ const REVIEWS = [
     age: "18 éves",
     text: "Rugalmas időpontokkal és jó hangulatú órákkal segítettek abban, hogy könnyebben elsajátítsam a vezetés alapjait.",
   },
+  {
+    name: "[Név]",
+    age: "[Év]",
+    text: "[Vélemény szövege]",
+  },
+  {
+    name: "[Név]",
+    age: "[Év]",
+    text: "[Vélemény szövege]",
+  },
+  {
+    name: "[Név]",
+    age: "[Év]",
+    text: "[Vélemény szövege]",
+  },
 ];
 
 function ReviewsPage() {
