@@ -4,15 +4,15 @@ import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { useI18n } from "@/i18n/context";
 
-const navItems = [
-  { to: "/", key: "home" as const },
-  { to: "/rolunk", key: "about" as const },
-  { to: "/szolgaltatasok", key: "services" as const },
-  { to: "/oktatok", key: "instructors" as const },
-  { to: "/autok", key: "cars" as const },
-  { to: "/sikereink", key: "wall" as const },
-  { to: "/gyik", key: "faq" as const },
-  { to: "/kapcsolat", key: "contact" as const },
+const navItems: { to: string; hash?: string; key: "home" | "about" | "services" | "instructors" | "cars" | "wall" | "faq" | "contact" }[] = [
+  { to: "/", key: "home" },
+  { to: "/rolunk", key: "about" },
+  { to: "/szolgaltatasok", key: "services" },
+  { to: "/oktatok", key: "instructors" },
+  { to: "/", hash: "autok", key: "cars" },
+  { to: "/sikereink", key: "wall" },
+  { to: "/gyik", key: "faq" },
+  { to: "/kapcsolat", key: "contact" },
 ];
 
 export function Header() {
@@ -44,9 +44,10 @@ export function Header() {
           <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
               <Link
-                key={item.to}
+                key={`${item.to}${item.hash ?? ""}`}
                 to={item.to}
-                activeOptions={{ exact: item.to === "/" }}
+                hash={item.hash}
+                activeOptions={{ exact: item.to === "/" && !item.hash }}
                 activeProps={{ className: "text-brand" }}
                 inactiveProps={{ className: "text-ink hover:text-brand" }}
                 className="px-3 py-2 text-sm font-medium transition-colors rounded-full"
@@ -73,10 +74,11 @@ export function Header() {
             <div className="flex flex-col gap-1 border-t border-border pt-4">
               {navItems.map((item) => (
                 <Link
-                  key={item.to}
+                  key={`${item.to}${item.hash ?? ""}`}
                   to={item.to}
+                  hash={item.hash}
                   onClick={() => setOpen(false)}
-                  activeOptions={{ exact: item.to === "/" }}
+                  activeOptions={{ exact: item.to === "/" && !item.hash }}
                   activeProps={{ className: "text-brand" }}
                   inactiveProps={{ className: "text-ink" }}
                   className="px-3 py-3 text-base font-medium rounded-xl hover:bg-secondary"

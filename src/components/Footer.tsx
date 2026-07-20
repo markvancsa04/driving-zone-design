@@ -3,19 +3,19 @@ import { Facebook, Instagram, MapPin, Phone, Mail } from "lucide-react";
 import { Logo } from "./Logo";
 import { useI18n } from "@/i18n/context";
 
-const links = [
-  { to: "/", key: "home" as const },
-  { to: "/rolunk", key: "about" as const },
-  { to: "/szolgaltatasok", key: "services" as const },
-  { to: "/oktatok", key: "instructors" as const },
-  { to: "/autok", key: "cars" as const },
-  { to: "/sikereink", key: "wall" as const },
-  { to: "/velemenyek", key: "reviews" as const },
-  { to: "/vizsgatippek", key: "tips" as const },
-  { to: "/hirek", key: "news" as const },
-  { to: "/testepermis", key: "testepermis" as const },
-  { to: "/gyik", key: "faq" as const },
-  { to: "/kapcsolat", key: "contact" as const },
+const links: { to: string; hash?: string; key: "home" | "about" | "services" | "instructors" | "cars" | "wall" | "reviews" | "tips" | "news" | "testepermis" | "faq" | "contact" }[] = [
+  { to: "/", key: "home" },
+  { to: "/rolunk", key: "about" },
+  { to: "/szolgaltatasok", key: "services" },
+  { to: "/oktatok", key: "instructors" },
+  { to: "/", hash: "autok", key: "cars" },
+  { to: "/sikereink", key: "wall" },
+  { to: "/velemenyek", key: "reviews" },
+  { to: "/vizsgatippek", key: "tips" },
+  { to: "/hirek", key: "news" },
+  { to: "/testepermis", key: "testepermis" },
+  { to: "/gyik", key: "faq" },
+  { to: "/kapcsolat", key: "contact" },
 ];
 
 export function Footer() {
@@ -71,9 +71,10 @@ export function Footer() {
             </h4>
             <ul className="grid grid-cols-2 gap-y-2 gap-x-4 text-sm">
               {links.map((l) => (
-                <li key={l.to}>
+                <li key={`${l.to}${l.hash ?? ""}`}>
                   <Link
                     to={l.to}
+                    hash={l.hash}
                     className="text-ink hover:text-brand transition-colors"
                   >
                     {t.nav[l.key]}

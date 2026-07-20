@@ -22,7 +22,6 @@ import { Route as KapcsolatRouteImport } from './routes/kapcsolat'
 import { Route as JelentkezesRouteImport } from './routes/jelentkezes'
 import { Route as HirekRouteImport } from './routes/hirek'
 import { Route as GyikRouteImport } from './routes/gyik'
-import { Route as AutokRouteImport } from './routes/autok'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
@@ -93,11 +92,6 @@ const GyikRoute = GyikRouteImport.update({
   path: '/gyik',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AutokRoute = AutokRouteImport.update({
-  id: '/autok',
-  path: '/autok',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -124,7 +118,6 @@ const Char91DotmcpChar93InvokeToolToolRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/autok': typeof AutokRoute
   '/gyik': typeof GyikRoute
   '/hirek': typeof HirekRoute
   '/jelentkezes': typeof JelentkezesRoute
@@ -144,7 +137,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/autok': typeof AutokRoute
   '/gyik': typeof GyikRoute
   '/hirek': typeof HirekRoute
   '/jelentkezes': typeof JelentkezesRoute
@@ -165,7 +157,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/autok': typeof AutokRoute
   '/gyik': typeof GyikRoute
   '/hirek': typeof HirekRoute
   '/jelentkezes': typeof JelentkezesRoute
@@ -187,7 +178,6 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/autok'
     | '/gyik'
     | '/hirek'
     | '/jelentkezes'
@@ -207,7 +197,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/autok'
     | '/gyik'
     | '/hirek'
     | '/jelentkezes'
@@ -227,7 +216,6 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/autok'
     | '/gyik'
     | '/hirek'
     | '/jelentkezes'
@@ -248,7 +236,6 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AutokRoute: typeof AutokRoute
   GyikRoute: typeof GyikRoute
   HirekRoute: typeof HirekRoute
   JelentkezesRoute: typeof JelentkezesRoute
@@ -360,13 +347,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GyikRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/autok': {
-      id: '/autok'
-      path: '/autok'
-      fullPath: '/autok'
-      preLoaderRoute: typeof AutokRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -400,7 +380,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AutokRoute: AutokRoute,
   GyikRoute: GyikRoute,
   HirekRoute: HirekRoute,
   JelentkezesRoute: JelentkezesRoute,
