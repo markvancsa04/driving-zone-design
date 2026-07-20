@@ -26,8 +26,8 @@ function FAQPage() {
     <>
       <PageHeader
         eyebrow="GYIK"
-        title="[Gyakori kérdések]"
-        intro="[Rövid bevezető]"
+        title="Gyakori kérdések | Driving Zone"
+        intro="Gyors válaszok a leggyakrabban felmerülő kérdésekre."
       />
       <Section>
         <div className="max-w-3xl mx-auto space-y-3">
