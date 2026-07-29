@@ -38,7 +38,7 @@ const SERVICES = [
 
 const FEATURED_INSTRUCTORS = [
   {
-    name: "Bálint - tulajdonos, menedzser és oktató",
+    name: " Illés Bálint - tulajdonos, menedzser és oktató",
     intro: "Ismerd meg az iskola vezetőjét.",
   },
   {
