@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Star, Car, Facebook, Instagram } from "lucide-react";
+import { ArrowRight, Star, Car } from "lucide-react";
 import { ImagePlaceholder } from "@/components/Placeholder";
 import { Section, SectionHeader } from "@/components/Section";
 import { HeroSlider } from "@/components/HeroSlider";
@@ -132,7 +132,7 @@ function HomePage() {
                 <ImagePlaceholder
                   label="[Oktató fotó]"
                   className="aspect-[16/10] rounded-none border-0 border-b border-border"
-                  src={instructorImageAsset.url}
+                  src={instructor.image}
                   alt="Driving Zone oktatói"
                 />
                 <div className="p-8">

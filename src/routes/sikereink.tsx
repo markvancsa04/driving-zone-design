@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { PageHeader, Section } from "@/components/Section";
+import { SocialLinks } from "@/components/SocialLinks";
 
 import { GALLERY_IMAGES } from "@/lib/gallery-images";
 import { X } from "lucide-react";
@@ -34,6 +35,7 @@ function WallPage() {
         intro="Tekintse meg korábbi munkáinkat és a közösen elért sikereinket."
       />
       <Section>
+        <SocialLinks className="mb-10" />
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
           {GALLERY_IMAGES.map((src, i) => (
             <button
