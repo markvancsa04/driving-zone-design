@@ -2,171 +2,77 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageHeader, Section } from "@/components/Section";
 import { Plus, Minus } from "lucide-react";
+import { pageBySlug, setting, siteContentQuery, useSiteContent } from "@/lib/cms";
 
 export const Route = createFileRoute("/gyik")({
-  head: () => ({
+  loader: async ({ context }) =>
+    pageBySlug(await context.queryClient.ensureQueryData(siteContentQuery), "/gyik"),
+  head: ({ loaderData }) => ({
     meta: [
-      { title: "GYIK – Driving Zone" },
-      { name: "description", content: "Gyakran feltett kérdések a jogosítványszerzésről." },
-      { property: "og:title", content: "GYIK – Driving Zone" },
-      { property: "og:description", content: "Válaszok a leggyakoribb kérdésekre." },
+      { title: loaderData?.meta_title || loaderData?.title || "GYIK – Driving Zone" },
+      { name: "description", content: loaderData?.meta_description || loaderData?.intro || "" },
+      { property: "og:title", content: loaderData?.meta_title || loaderData?.title || "" },
+      { property: "og:description", content: loaderData?.meta_description || loaderData?.intro || "" },
     ],
   }),
   component: FAQPage,
 });
 
-const practicalItems = [
-  {
-    q: "Mikor kezdhetem a vezetési órákat?",
-    a: "Az elméleti feltételek teljesítése után elkezdheted a gyakorlati oktatást.",
-  },
-  {
-    q: "Hány vezetési óra szükséges a vizsgához?",
-    a: "A kötelező óraszám teljesítése szükséges, de a fejlődéstől függően több óra is ajánlott lehet.",
-  },
-  {
-    q: "Mi történik az első vezetési órán?",
-    a: "Megismerkedsz az autóval, az alapkezeléssel és az első vezetési feladatokkal.",
-  },
-  {
-    q: "Mi van, ha még soha nem vezettem?",
-    a: "Semmi probléma, az oktató lépésről lépésre megtanít minden alapot.",
-  },
-  {
-    q: "Nehéz a forgalmi vizsga?",
-    a: "Megfelelő gyakorlással és felkészüléssel sikeresen teljesíthető.",
-  },
-  {
-    q: "Választhatok oktatót?",
-    a: "Igen, lehetőség van az oktatók közül választani a szabad helyek függvényében.",
-  },
-  {
-    q: "Hányszor vezessek egy héten?",
-    a: "A rendszeres órák segítik a gyorsabb fejlődést és a biztosabb tudást.",
-  },
-  {
-    q: "Mi történik, ha hibázok vezetés közben?",
-    a: "Az oktató segít kijavítani a hibákat és biztonságosan fejlődni.",
-  },
-];
-
-const theoreticalItems = [
-  {
-    q: "Hol tanulhatom meg a KRESZ-t?",
-    a: "Az elméleti oktatáson megtanulod a közlekedési szabályokat és a biztonságos vezetés alapjait.",
-  },
-  {
-    q: "Nehéz a KRESZ vizsga?",
-    a: "Rendszeres tanulással és gyakorló tesztekkel sikeresen teljesíthető.",
-  },
-  {
-    q: "Mennyi ideig tart az elméleti képzés?",
-    a: "A szükséges tanórák teljesítése után jelentkezhetsz elméleti vizsgára.",
-  },
-  {
-    q: "Hány hibát lehet véteni a KRESZ vizsgán?",
-    a: "A vizsga követelményeit teljesíteni kell a sikeres eredményhez.",
-  },
-  {
-    q: "Mikor jelentkezhetek vizsgára?",
-    a: "Az előírt elméleti követelmények teljesítése után lehet vizsgára jelentkezni.",
-  },
-];
+type Faq = { id: string; question: string; answer: string };
 
 function FAQPage() {
-  const [openPractical, setOpenPractical] = useState<number | null>(0);
-  const [openTheoretical, setOpenTheoretical] = useState<number | null>(null);
+  const content = useSiteContent();
+  const page = pageBySlug(content, "/gyik");
+  const practical = content.faqs.filter((f) => f.category !== "theoretical");
+  const theoretical = content.faqs.filter((f) => f.category === "theoretical");
 
   return (
     <>
-      <PageHeader
-        eyebrow="GYIK"
-        title="Gyakori kérdések | Driving Zone"
-        intro="Gyors válaszok a leggyakrabban felmerülő kérdésekre."
-      />
+      <PageHeader eyebrow={page.eyebrow} title={page.title} intro={page.intro} />
       <Section>
-        <div className="max-w-5xl mx-auto space-y-10 md:space-y-14">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-ink mb-5 md:mb-6">
-              Gyakorlati kérdések
-            </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-              {practicalItems.map((it, i) => {
-                const isOpen = openPractical === i;
-                return (
-                  <div
-                    key={`practical-${i}`}
-                    className="rounded-2xl border border-border bg-card overflow-hidden"
-                  >
-                    <button
-                      onClick={() => setOpenPractical(isOpen ? null : i)}
-                      className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
-                    >
-                      <span className="text-base md:text-lg font-semibold text-ink">
-                        {it.q}
-                      </span>
-                      <span className="h-9 w-9 shrink-0 rounded-full bg-secondary grid place-items-center text-brand">
-                        {isOpen ? <Minus className="size-4" /> : <Plus className="size-4" />}
-                      </span>
-                    </button>
-                    <div
-                      className={`grid transition-all duration-300 ease-out ${
-                        isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                      }`}
-                    >
-                      <div className="overflow-hidden">
-                        <p className="px-6 pb-6 text-sm text-muted-foreground leading-relaxed">
-                          {it.a}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-ink mb-5 md:mb-6">
-              Elméleti kérdések
-            </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-              {theoreticalItems.map((it, i) => {
-                const isOpen = openTheoretical === i;
-                return (
-                  <div
-                    key={`theoretical-${i}`}
-                    className="rounded-2xl border border-border bg-card overflow-hidden"
-                  >
-                    <button
-                      onClick={() => setOpenTheoretical(isOpen ? null : i)}
-                      className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
-                    >
-                      <span className="text-base md:text-lg font-semibold text-ink">
-                        {it.q}
-                      </span>
-                      <span className="h-9 w-9 shrink-0 rounded-full bg-secondary grid place-items-center text-brand">
-                        {isOpen ? <Minus className="size-4" /> : <Plus className="size-4" />}
-                      </span>
-                    </button>
-                    <div
-                      className={`grid transition-all duration-300 ease-out ${
-                        isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                      }`}
-                    >
-                      <div className="overflow-hidden">
-                        <p className="px-6 pb-6 text-sm text-muted-foreground leading-relaxed">
-                          {it.a}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+        <div className="space-y-12">
+          <FaqGroup title={setting(content, "faq_practical_title", "Gyakorlati kérdések")} items={practical} />
+          <FaqGroup title={setting(content, "faq_theoretical_title", "Elméleti kérdések")} items={theoretical} />
         </div>
       </Section>
     </>
+  );
+}
+
+function FaqGroup({ title, items }: { title: string; items: Faq[] }) {
+  const [open, setOpen] = useState<string | null>(null);
+  if (items.length === 0) return null;
+
+  return (
+    <div>
+      <h2 className="text-2xl md:text-3xl font-bold text-ink mb-5 md:mb-6">{title}</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+        {items.map((it) => {
+          const isOpen = open === it.id;
+          return (
+            <div key={it.id} className="rounded-2xl border border-border bg-card overflow-hidden">
+              <button
+                onClick={() => setOpen(isOpen ? null : it.id)}
+                className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
+              >
+                <span className="text-base md:text-lg font-semibold text-ink">{it.question}</span>
+                <span className="h-9 w-9 shrink-0 rounded-full bg-secondary grid place-items-center text-brand">
+                  {isOpen ? <Minus className="size-4" /> : <Plus className="size-4" />}
+                </span>
+              </button>
+              <div
+                className={`grid transition-all duration-300 ease-out ${
+                  isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <p className="px-6 pb-6 text-sm text-muted-foreground leading-relaxed">{it.answer}</p>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }
