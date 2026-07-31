@@ -1,24 +1,18 @@
-import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { useI18n } from "@/i18n/context";
-
-const navItems: { to: string; hash?: string; key: "home" | "about" | "services" | "instructors" | "cars" | "wall" | "faq" | "contact" }[] = [
-  { to: "/", key: "home" },
-  { to: "/rolunk", key: "about" },
-  { to: "/szolgaltatasok", key: "services" },
-  { to: "/oktatok", key: "instructors" },
-  { to: "/", hash: "autok", key: "cars" },
-  { to: "/sikereink", key: "wall" },
-  { to: "/gyik", key: "faq" },
-  { to: "/kapcsolat", key: "contact" },
-];
+import { CmsLink } from "./CmsLink";
+import { useSiteContent } from "@/lib/cms";
 
 export function Header() {
   const { t } = useI18n();
+  const content = useSiteContent();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const navItems = content.navLinks.filter((l) => l.location === "header" || l.location === "both");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -43,17 +37,16 @@ export function Header() {
 
           <nav className="hidden lg:flex items-center gap-1">
             {navItems.map((item) => (
-              <Link
-                key={`${item.to}${item.hash ?? ""}`}
-                to={item.to}
-                hash={item.hash}
-                activeOptions={{ exact: item.to === "/" && !item.hash }}
+              <CmsLink
+                key={item.id}
+                href={item.href}
+                activeOptions={{ exact: item.href === "/" }}
                 activeProps={{ className: "text-brand" }}
                 inactiveProps={{ className: "text-ink hover:text-brand" }}
                 className="px-3 py-2 text-sm font-medium transition-colors rounded-full"
               >
-                {t.nav[item.key]}
-              </Link>
+                {item.label}
+              </CmsLink>
             ))}
             <Link to="/jelentkezes" className="btn-brand ml-3">
               {t.nav.apply}
@@ -73,18 +66,17 @@ export function Header() {
           <div className="lg:hidden pb-6 fade-up">
             <div className="flex flex-col gap-1 border-t border-border pt-4">
               {navItems.map((item) => (
-                <Link
-                  key={`${item.to}${item.hash ?? ""}`}
-                  to={item.to}
-                  hash={item.hash}
+                <CmsLink
+                  key={item.id}
+                  href={item.href}
                   onClick={() => setOpen(false)}
-                  activeOptions={{ exact: item.to === "/" && !item.hash }}
+                  activeOptions={{ exact: item.href === "/" }}
                   activeProps={{ className: "text-brand" }}
                   inactiveProps={{ className: "text-ink" }}
                   className="px-3 py-3 text-base font-medium rounded-xl hover:bg-secondary"
                 >
-                  {t.nav[item.key]}
-                </Link>
+                  {item.label}
+                </CmsLink>
               ))}
               <Link
                 to="/jelentkezes"

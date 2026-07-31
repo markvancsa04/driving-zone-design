@@ -2,23 +2,27 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { PageHeader, Section } from "@/components/Section";
 import { SocialLinks } from "@/components/SocialLinks";
-
-import { GALLERY_IMAGES } from "@/lib/gallery-images";
 import { X } from "lucide-react";
+import { pageBySlug, siteContentQuery, useSiteContent } from "@/lib/cms";
 
 export const Route = createFileRoute("/sikereink")({
-  head: () => ({
+  loader: async ({ context }) =>
+    pageBySlug(await context.queryClient.ensureQueryData(siteContentQuery), "/sikereink"),
+  head: ({ loaderData }) => ({
     meta: [
-      { title: "Sikereink – Driving Zone" },
-      { name: "description", content: "Diákjaink sikerei és pillanatai." },
-      { property: "og:title", content: "Sikereink – Driving Zone" },
-      { property: "og:description", content: "Több ezer sikeres vizsga pillanatai." },
+      { title: loaderData?.meta_title || loaderData?.title || "Sikereink – Driving Zone" },
+      { name: "description", content: loaderData?.meta_description || loaderData?.intro || "" },
+      { property: "og:title", content: loaderData?.meta_title || loaderData?.title || "" },
+      { property: "og:description", content: loaderData?.meta_description || loaderData?.intro || "" },
     ],
   }),
   component: WallPage,
 });
 
 function WallPage() {
+  const content = useSiteContent();
+  const page = pageBySlug(content, "/sikereink");
+  const images = content.gallery;
   const [open, setOpen] = useState<number | null>(null);
 
   useEffect(() => {
@@ -29,23 +33,19 @@ function WallPage() {
 
   return (
     <>
-      <PageHeader
-        eyebrow="Wall of Fame"
-        title="Eredményeink | Driving Zone"
-        intro="Tekintse meg korábbi munkáinkat és a közösen elért sikereinket."
-      />
+      <PageHeader eyebrow={page.eyebrow} title={page.title} intro={page.intro} />
       <Section>
         <SocialLinks className="mb-10" />
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
-          {GALLERY_IMAGES.map((src, i) => (
+          {images.map((image, i) => (
             <button
-              key={src}
+              key={image.id}
               onClick={() => setOpen(i)}
               className="group relative overflow-hidden rounded-3xl aspect-square focus:outline-none focus:ring-2 focus:ring-brand bg-secondary"
             >
               <img
-                src={src}
-                alt={`Driving Zone sikeres diák ${i + 1}`}
+                src={image.image_url}
+                alt={image.alt || `Driving Zone sikeres diák ${i + 1}`}
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -55,7 +55,7 @@ function WallPage() {
         </div>
       </Section>
 
-      {open !== null && (
+      {open !== null && images[open] && (
         <div
           className="fixed inset-0 z-[60] bg-ink/80 backdrop-blur-sm flex items-center justify-center p-6 fade-up"
           onClick={() => setOpen(null)}
@@ -69,8 +69,8 @@ function WallPage() {
           </button>
           <div className="w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
             <img
-              src={GALLERY_IMAGES[open]}
-              alt={`Driving Zone sikeres diák ${open + 1}`}
+              src={images[open].image_url}
+              alt={images[open].alt || `Driving Zone sikeres diák ${open + 1}`}
               className="w-full max-h-[85vh] object-contain rounded-3xl"
             />
           </div>

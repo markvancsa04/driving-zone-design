@@ -1,72 +1,38 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Section } from "@/components/Section";
-
 import { ArrowRight } from "lucide-react";
+import { CmsLink } from "@/components/CmsLink";
+import { pageBySlug, siteContentQuery, useSiteContent } from "@/lib/cms";
 
 export const Route = createFileRoute("/szolgaltatasok")({
-  head: () => ({
+  loader: async ({ context }) =>
+    pageBySlug(await context.queryClient.ensureQueryData(siteContentQuery), "/szolgaltatasok"),
+  head: ({ loaderData }) => ({
     meta: [
-      { title: "Szolgáltatások és árak – Driving Zone" },
-      { name: "description", content: "Járművezetői tanfolyam, gyakorló órák, jogosítványcsere és további szolgáltatások." },
-      { property: "og:title", content: "Szolgáltatások – Driving Zone" },
-      { property: "og:description", content: "Nézd meg szolgáltatásainkat és aktuális árainkat." },
+      { title: loaderData?.meta_title || loaderData?.title || "Szolgáltatások – Driving Zone" },
+      { name: "description", content: loaderData?.meta_description || loaderData?.intro || "" },
+      { property: "og:title", content: loaderData?.meta_title || loaderData?.title || "" },
+      { property: "og:description", content: loaderData?.meta_description || loaderData?.intro || "" },
     ],
   }),
   component: ServicesPage,
 });
 
-const SERVICES = [
-  {
-    category: "B KATEGÓRIA",
-    title: "B kategóriás járművezetői tanfolyam",
-    description: "Türelmes és tapasztalt oktatók, akik mellett élmény a tanulás.",
-    price: "2400 RON-tól",
-    badge: "Népszerű",
-  },
-  {
-    category: "VEZETÉS-TÖKÉLETESÍTŐ ÓRÁK",
-    title: "Gyakorló vezetés",
-    description: "Személyre szabott gyakorló órák saját vagy oktatóautóval már meglévő jogosítvánnyal rendelkezőknek.",
-    price: "150 RON-tól",
-  },
-  {
-    category: "JOGOSÍTVÁNYCSERE",
-    title: "Külföldi honosítás",
-    description: "Külföldön szerzett vezetői engedélyek románra való cseréjének teljes körű ügyintézése.",
-    price: "Egyedi ár",
-  },
-  {
-    category: "JOGOSÍTVÁNY VISSZASZERZÉSE",
-    title: "Bevont vagy annulált engedélyek",
-    description: "Ha nehéz helyzetbe kerültél, mi segítünk a legális és leggyorsabb visszatérésben az utakra.",
-    price: "Egyedi ár",
-  },
-  {
-    category: "ALTERNATÍV MOBILITÁS TANFOLYAM",
-    title: "Roller és kerékpár törvényes használata",
-    description: "Rövid felkészítő tanfolyam a rollerek és kerékpárok biztonságos és szabályos utcai használatáról.",
-    price: "200 Ron, Minim 5 fős csoportnak 150 Ron/fő",
-  },
-];
-
 function ServicesPage() {
+  const content = useSiteContent();
+  const page = pageBySlug(content, "/szolgaltatasok");
+
   return (
     <>
-      <PageHeader
-        eyebrow="Szolgáltatások"
-        title="Szolgáltatásaink – Driving Zone"
-        intro="Nálunk mindent egy helyen elintézhetsz, ami a járművezetéssel és a jogosítvánnyal kapcsolatos.&nbsp;"
-      />
+      <PageHeader eyebrow={page.eyebrow} title={page.title} intro={page.intro} />
       <Section>
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {SERVICES.map((service, i) => (
-            <article key={i} className="card-lift rounded-3xl bg-card border border-border p-8 flex flex-col">
+          {content.services.map((service) => (
+            <article key={service.id} className="card-lift rounded-3xl bg-card border border-border p-8 flex flex-col">
               <div className="text-xs font-semibold tracking-widest uppercase text-brand">
                 {service.category}
               </div>
-              <h3 className="mt-2 text-2xl font-semibold text-ink">
-                {service.title}
-              </h3>
+              <h3 className="mt-2 text-2xl font-semibold text-ink">{service.title}</h3>
               <p className="mt-3 text-sm text-muted-foreground flex-1 whitespace-pre-line">
                 {service.description}
               </p>
@@ -79,9 +45,12 @@ function ServicesPage() {
                     </div>
                   )}
                 </div>
-                <Link to="/jelentkezes" className="text-sm font-semibold text-ink hover:text-brand inline-flex items-center gap-1">
-                  Jelentkezés <ArrowRight className="size-4" />
-                </Link>
+                <CmsLink
+                  href={service.cta_link || "/jelentkezes"}
+                  className="text-sm font-semibold text-ink hover:text-brand inline-flex items-center gap-1"
+                >
+                  {service.cta_text || "Jelentkezés"} <ArrowRight className="size-4" />
+                </CmsLink>
               </div>
             </article>
           ))}

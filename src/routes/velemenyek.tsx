@@ -1,67 +1,35 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Section } from "@/components/Section";
 import { Star } from "lucide-react";
-import { ImagePlaceholder } from "@/components/Placeholder";
+import { pageBySlug, siteContentQuery, useSiteContent } from "@/lib/cms";
 
 export const Route = createFileRoute("/velemenyek")({
-  head: () => ({
+  loader: async ({ context }) =>
+    pageBySlug(await context.queryClient.ensureQueryData(siteContentQuery), "/velemenyek"),
+  head: ({ loaderData }) => ({
     meta: [
-      { title: "Vélemények – Driving Zone" },
-      { name: "description", content: "Diákjaink véleményei rólunk." },
-      { property: "og:title", content: "Vélemények – Driving Zone" },
-      { property: "og:description", content: "Olvasd el, mit mondanak rólunk diákjaink." },
+      { title: loaderData?.meta_title || loaderData?.title || "Vélemények – Driving Zone" },
+      { name: "description", content: loaderData?.meta_description || loaderData?.intro || "" },
+      { property: "og:title", content: loaderData?.meta_title || loaderData?.title || "" },
+      { property: "og:description", content: loaderData?.meta_description || loaderData?.intro || "" },
     ],
   }),
   component: ReviewsPage,
 });
 
-const REVIEWS = [
-  {
-    name: "Menyhárt Ákos",
-    age: "18 éves",
-    text: "Nagyon türelmes oktatót kaptam, minden órán éreztem, hogy biztos kezekben vagyok, és sikerült magabiztosan levizsgáznom.",
-  },
-  {
-    name: "Dudás Nóra",
-    age: "19 éves",
-    text: "Nagyon pozitív élmény volt a tanulás, az oktatás során mindig kaptam hasznos tanácsokat és segítséget:)",
-  },
-  {
-    name: "Barabás Csongi",
-    age: "18 éves",
-    text: "Rugalmas időpontokkal és jó hangulatú órákkal segítettek abban, hogy könnyebben elsajátítsam a vezetés alapjait.",
-  },
-  {
-    name: "Todor Zalán",
-    age: "18 éves",
-    text: "Kezdőként vágtam bele, de az órák során fokozatosan megszerettem a vezetést és felkészülten mentem a vizsgára.",
-  },
-  {
-    name: "Keresztes Noémi",
-    age: "18 éves",
-    text: "Türelmes és érthető magyarázatokat kaptam, aminek köszönhetően sokkal magabiztosabban ültem a volán mögé.",
-  },
-  {
-    name: "Deme Katinka",
-    age: "18 éves",
-    text: "Örülök, hogy ezt az autósiskolát választottam, minden óra közelebb vitt a sikeres vizsgához:)",
-  },
-];
-
 function ReviewsPage() {
+  const content = useSiteContent();
+  const page = pageBySlug(content, "/velemenyek");
+
   return (
     <>
-      <PageHeader
-        eyebrow="Vélemények"
-        title="Ügyfeleink mondták | Driving Zone"
-        intro="Valódi vélemények azoktól, akik már minket választottak."
-      />
+      <PageHeader eyebrow={page.eyebrow} title={page.title} intro={page.intro} />
       <Section>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {REVIEWS.map((review, i) => (
-            <article key={i} className="card-lift rounded-3xl border border-border bg-card p-8">
+          {content.reviews.map((review) => (
+            <article key={review.id} className="card-lift rounded-3xl border border-border bg-card p-8">
               <div className="flex gap-1 text-brand mb-5">
-                {Array.from({ length: 5 }).map((_, k) => (
+                {Array.from({ length: review.rating || 5 }).map((_, k) => (
                   <Star key={k} className="size-4 fill-current" />
                 ))}
               </div>

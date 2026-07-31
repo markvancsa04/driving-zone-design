@@ -1,120 +1,67 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight, Star, Car } from "lucide-react";
 import { ImagePlaceholder } from "@/components/Placeholder";
 import { Section, SectionHeader } from "@/components/Section";
 import { HeroSlider } from "@/components/HeroSlider";
-import instructorImageAsset from "@/assets/instructor-fleet.jpg.asset.json";
-import balintImg from "@/assets/instructor-balint.jpg.asset.json";
-import skodaImg from "@/assets/car-skoda-fabia.webp.asset.json";
-import seatImg from "@/assets/car-seat-ibiza.webp.asset.json";
-import { GALLERY_IMAGES } from "@/lib/gallery-images";
+import { CmsLink } from "@/components/CmsLink";
 import { SocialLinks } from "@/components/SocialLinks";
+import { pageBySlug, setting, siteContentQuery, useSiteContent } from "@/lib/cms";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Driving Zone – Autósiskola Kézdivásárhelyen" },
-      { name: "description", content: "Több mint 5000 sikeres vizsga. Modern autók, tapasztalt oktatók, teljes körű ügyintézés." },
-      { property: "og:title", content: "Driving Zone – Autósiskola" },
-      { property: "og:description", content: "Több mint 5000 sikeres vizsga. Vezess magabiztosan velünk." },
-    ],
-  }),
+  loader: async ({ context }) => {
+    const content = await context.queryClient.ensureQueryData(siteContentQuery);
+    return { page: pageBySlug(content, "/"), settings: content.settings };
+  },
+  head: ({ loaderData }) => {
+    const s = loaderData?.settings ?? {};
+    const title = loaderData?.page.meta_title || s["hero_title"] || "Driving Zone";
+    const description = loaderData?.page.meta_description || s["hero_subtitle"] || "";
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+      ],
+    };
+  },
   component: HomePage,
 });
 
-const SERVICES = [
-  {
-    title: "B kategóriás járművezetői tanfolyam",
-    description: "Türelmes és tapasztalt oktatók, akik mellett élmény a tanulás.",
-    price: "2400 - Rontól",
-  },
-  {
-    title: "Vezetés-tökéletesítő órák (Már meglévő jogosítvánnyal)",
-    description: "Személyre szabott gyakorló órák saját vagy oktatóautóval.",
-    price: "150 - Rontól",
-  },
-  {
-    title: "Jogosítványcsere (Külföldi és belföldi)",
-    description: "Külföldön szerzett vezetői engedélyek románra való cseréje (honosítás).",
-    price: "Szemelyreszabott ár, kérj ajánlatot",
-  },
-];
-
-const FEATURED_INSTRUCTORS = [
-  {
-    name: " Illés Bálint - tulajdonos, menedzser és oktató",
-    intro: "Ismerd meg az iskola vezetőjét.",
-    image: balintImg.url,
-  },
-  {
-    name: "Illés László - az iskola szülőatyja",
-    intro: "Ismerd meg alapítónkat és mentorunkat.",
-    image: instructorImageAsset.url,
-  },
-];
-
-const CARS = [
-  {
-    model: "Skoda Fabia (2022)",
-    description: "Egy rendkívül barátságos, kiválóan manőverezhető és könnyen kezelhető autó, amely tökéletes partner a városi forgalom és a parkolási feladatok magabiztos elsajátításához.",
-    image: skodaImg.url,
-  },
-  {
-    model: "Seat Ibiza 2022",
-    description: "Dinamikus, modern és végtelenül kényelmes kompakt autó, amely a legújabb biztonsági rendszereivel és könnyed vezethetőségével azonnal meghozza a kedved a vezetéshez.",
-    image: seatImg.url,
-  },
-];
-
-const REVIEWS = [
-  {
-    name: "Menyhárt Ákos",
-    age: "18 éves",
-    text: "Nagyon türelmes oktatót kaptam, minden órán éreztem, hogy biztos kezekben vagyok, és sikerült magabiztosan levizsgáznom.",
-  },
-  {
-    name: "Dudás Nóra",
-    age: "19 éeves",
-    text: "Nagyon pozitív élmény volt a tanulás, az oktatás során mindig kaptam hasznos tanácsokat és segítséget:)",
-  },
-  {
-    name: "Barabás Csongi",
-    age: "18 éves",
-    text: "Rugalmas időpontokkal és jó hangulatú órákkal segítettek abban, hogy könnyebben elsajátítsam a vezetés alapjait.",
-  },
-];
-
 function HomePage() {
+  const content = useSiteContent();
+  const services = content.services.filter((s) => s.show_on_home);
+  const instructors = content.instructors.filter((i) => i.show_on_home);
+  const reviews = content.reviews.filter((r) => r.show_on_home);
+  const gallery = content.gallery.slice(0, 4);
+
   return (
     <>
       <HeroSlider />
 
-
       {/* SERVICES PREVIEW */}
       <Section>
         <SectionHeader
-          eyebrow="Szolgáltatások"
-          title="Szolgáltatásaink – Driving Zone"
-          intro=""
+          eyebrow={setting(content, "home_services_eyebrow")}
+          title={setting(content, "home_services_title")}
+          intro={setting(content, "home_services_intro")}
         />
         <div className="grid gap-6 md:grid-cols-3">
-          {SERVICES.map((service, index) => (
-            <article key={index} className="card-lift rounded-3xl border border-border bg-card p-8">
+          {services.map((service) => (
+            <article key={service.id} className="card-lift rounded-3xl border border-border bg-card p-8">
               <div className="h-12 w-12 rounded-2xl bg-brand-soft grid place-items-center text-brand mb-6">
                 <Car className="size-5" />
               </div>
               <h3 className="text-xl font-semibold text-ink">{service.title}</h3>
-              <p className="mt-3 text-sm text-muted-foreground">
-                {service.description}
-              </p>
+              <p className="mt-3 text-sm text-muted-foreground">{service.description}</p>
               <div className="mt-6 text-sm font-semibold text-brand">{service.price}</div>
             </article>
           ))}
         </div>
         <div className="mt-10 flex justify-center">
-          <Link to="/szolgaltatasok" className="btn-ghost">
-            Továbbiak <ArrowRight className="size-4" />
-          </Link>
+          <CmsLink href="/szolgaltatasok" className="btn-ghost">
+            {setting(content, "home_services_cta_text")} <ArrowRight className="size-4" />
+          </CmsLink>
         </div>
       </Section>
 
@@ -122,32 +69,33 @@ function HomePage() {
       <Section className="bg-secondary/40 max-w-none px-0">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeader
-            eyebrow="Oktatók"
-            title="Csapatunk | Driving Zone"
-            intro="Tapasztalt és türelmes oktatóink segítenek, hogy magabiztos vezetővé válj."
+            eyebrow={setting(content, "home_instructors_eyebrow")}
+            title={setting(content, "home_instructors_title")}
+            intro={setting(content, "home_instructors_intro")}
           />
           <div className="grid gap-6 md:grid-cols-2">
-            {FEATURED_INSTRUCTORS.map((instructor, index) => (
-              <article key={index} className="card-lift rounded-3xl overflow-hidden bg-card border border-border">
+            {instructors.map((instructor) => (
+              <article key={instructor.id} className="card-lift rounded-3xl overflow-hidden bg-card border border-border">
                 <ImagePlaceholder
                   label="[Oktató fotó]"
                   className="aspect-[16/10] rounded-none border-0 border-b border-border"
-                  src={instructor.image}
-                  alt="Driving Zone oktatói"
+                  src={instructor.image_url}
+                  alt={instructor.name}
                 />
                 <div className="p-8">
-                  <h3 className="text-xl font-semibold text-ink">{instructor.name}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {instructor.intro}
-                  </p>
+                  <h3 className="text-xl font-semibold text-ink">
+                    {instructor.name}
+                    {instructor.role ? ` - ${instructor.role.toLowerCase()}` : ""}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{instructor.bio}</p>
                 </div>
               </article>
             ))}
           </div>
           <div className="mt-10 flex justify-center">
-            <Link to="/oktatok" className="btn-ghost">
-              Összes oktató <ArrowRight className="size-4" />
-            </Link>
+            <CmsLink href="/oktatok" className="btn-ghost">
+              {setting(content, "home_instructors_cta_text")} <ArrowRight className="size-4" />
+            </CmsLink>
           </div>
         </div>
       </Section>
@@ -155,17 +103,17 @@ function HomePage() {
       {/* CARS PREVIEW */}
       <Section id="autok">
         <SectionHeader
-          eyebrow="Autópark"
-          title="Modern autóink | Driving Zone"
-          intro="Modern és kényelmes autóinkkal a vezetés tanulása egyszerűbb és magabiztosabb."
+          eyebrow={setting(content, "home_cars_eyebrow")}
+          title={setting(content, "home_cars_title")}
+          intro={setting(content, "home_cars_intro")}
         />
         <div className="grid gap-6 md:grid-cols-2">
-          {CARS.map((car, index) => (
-            <article key={index} className="card-lift rounded-3xl overflow-hidden bg-card border border-border">
+          {content.cars.map((car) => (
+            <article key={car.id} className="card-lift rounded-3xl overflow-hidden bg-card border border-border">
               <ImagePlaceholder
                 label={car.model}
                 className="aspect-[16/10] rounded-none border-0 border-b border-border"
-                src={car.image}
+                src={car.image_url}
                 alt={`Driving Zone oktatóautó – ${car.model}`}
               />
               <div className="p-8">
@@ -181,26 +129,26 @@ function HomePage() {
       <Section className="bg-secondary/40 max-w-none px-0">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeader
-            eyebrow="Sikereink"
-            title="Sikereink | Driving Zone"
-            intro="Tekintse meg korábbi munkáinkat és azokat az eredményeket, amelyekre büszkék vagyunk."
+            eyebrow={setting(content, "home_gallery_eyebrow")}
+            title={setting(content, "home_gallery_title")}
+            intro={setting(content, "home_gallery_intro")}
           />
           <SocialLinks className="mb-10 -mt-4" />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {GALLERY_IMAGES.slice(0, 4).map((src, i) => (
+            {gallery.map((image, i) => (
               <ImagePlaceholder
-                key={src}
+                key={image.id}
                 label={`Siker ${i + 1}`}
                 className="aspect-square rounded-3xl"
-                src={src}
-                alt={`Driving Zone sikeres diák ${i + 1}`}
+                src={image.image_url}
+                alt={image.alt || `Driving Zone sikeres diák ${i + 1}`}
               />
             ))}
           </div>
           <div className="mt-10 flex justify-center">
-            <Link to="/sikereink" className="btn-ghost">
-              Összes siker <ArrowRight className="size-4" />
-            </Link>
+            <CmsLink href="/sikereink" className="btn-ghost">
+              {setting(content, "home_gallery_cta_text")} <ArrowRight className="size-4" />
+            </CmsLink>
           </div>
         </div>
       </Section>
@@ -208,21 +156,19 @@ function HomePage() {
       {/* REVIEWS PREVIEW */}
       <Section>
         <SectionHeader
-          eyebrow="Vélemények"
-          title="Ügyfeleink mondták | Driving Zone"
-          intro="Valódi vélemények azoktól, akik már minket választottak."
+          eyebrow={setting(content, "home_reviews_eyebrow")}
+          title={setting(content, "home_reviews_title")}
+          intro={setting(content, "home_reviews_intro")}
         />
         <div className="grid gap-6 md:grid-cols-3">
-          {REVIEWS.map((review, i) => (
-            <article key={i} className="card-lift rounded-3xl border border-border bg-card p-8">
+          {reviews.map((review) => (
+            <article key={review.id} className="card-lift rounded-3xl border border-border bg-card p-8">
               <div className="flex gap-1 text-brand mb-4">
-                {Array.from({ length: 5 }).map((_, k) => (
+                {Array.from({ length: review.rating || 5 }).map((_, k) => (
                   <Star key={k} className="size-4 fill-current" />
                 ))}
               </div>
-              <p className="text-sm text-ink leading-relaxed">
-                {review.text}
-              </p>
+              <p className="text-sm text-ink leading-relaxed">{review.text}</p>
               <div className="mt-6">
                 <div className="text-sm font-semibold text-ink">{review.name}</div>
                 <div className="text-xs text-muted-foreground">{review.age}</div>
@@ -231,9 +177,9 @@ function HomePage() {
           ))}
         </div>
         <div className="mt-10 flex justify-center">
-          <Link to="/velemenyek" className="btn-ghost">
-            Összes vélemény <ArrowRight className="size-4" />
-          </Link>
+          <CmsLink href="/velemenyek" className="btn-ghost">
+            {setting(content, "home_reviews_cta_text")} <ArrowRight className="size-4" />
+          </CmsLink>
         </div>
       </Section>
     </>

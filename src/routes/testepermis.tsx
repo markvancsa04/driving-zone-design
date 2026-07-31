@@ -1,23 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Section } from "@/components/Section";
 import { ArrowRight, GraduationCap } from "lucide-react";
+import { CmsLink } from "@/components/CmsLink";
+import { pageBySlug, setting, siteContentQuery, useSiteContent } from "@/lib/cms";
 
 export const Route = createFileRoute("/testepermis")({
-  head: () => ({
+  loader: async ({ context }) =>
+    pageBySlug(await context.queryClient.ensureQueryData(siteContentQuery), "/testepermis"),
+  head: ({ loaderData }) => ({
     meta: [
-      { title: "Online tesztek | Driving Zone" },
-      { name: "description", content: "Gyakorolj a hivatalos elméleti tesztkérdésekkel és készülj fel a sikeres vizsgára." },
-      { property: "og:title", content: "Online tesztek | Driving Zone" },
-      { property: "og:description", content: "Gyakorolj a hivatalos elméleti tesztkérdésekkel a TestePermis segítségével." },
+      { title: loaderData?.meta_title || loaderData?.title || "Online tesztek | Driving Zone" },
+      { name: "description", content: loaderData?.meta_description || loaderData?.intro || "" },
+      { property: "og:title", content: loaderData?.meta_title || loaderData?.title || "" },
+      { property: "og:description", content: loaderData?.meta_description || loaderData?.intro || "" },
     ],
   }),
   component: TestePermisPage,
 });
 
 function TestePermisPage() {
+  const content = useSiteContent();
+  const page = pageBySlug(content, "/testepermis");
+  const note = setting(content, "testepermis_note");
+
   return (
     <>
-      <PageHeader eyebrow="TestePermis" title="Online tesztek | Driving Zone" intro="Ellenőrizd tudásod valódi vizsgakérdésekkel." />
+      <PageHeader eyebrow={page.eyebrow} title={page.title} intro={page.intro} />
       <Section>
         <div className="max-w-3xl mx-auto">
           <article className="rounded-3xl border border-border bg-gradient-to-br from-secondary/60 to-background p-10 md:p-16 shadow-soft text-center">
@@ -25,17 +33,15 @@ function TestePermisPage() {
               <GraduationCap className="size-7" />
             </div>
             <h2 className="mt-6 text-4xl md:text-5xl font-semibold text-ink">
-              Permis teszt
+              {setting(content, "testepermis_title")}
             </h2>
             <p className="mt-5 text-lg text-muted-foreground max-w-xl mx-auto">
-              Gyakorló kérdések a sikeres elméleti vizsgához.
+              {setting(content, "testepermis_text")}
             </p>
-            <a href="#" className="btn-brand mt-10 text-base px-8 py-4">
-              TestePermis <ArrowRight className="size-4" />
-            </a>
-            <p className="mt-4 text-xs text-muted-foreground">
-              [Külső link később kerül beillesztésre]
-            </p>
+            <CmsLink href={setting(content, "testepermis_cta_link", "#")} className="btn-brand mt-10 text-base px-8 py-4">
+              {setting(content, "testepermis_cta_text")} <ArrowRight className="size-4" />
+            </CmsLink>
+            {note && <p className="mt-4 text-xs text-muted-foreground">{note}</p>}
           </article>
         </div>
       </Section>
