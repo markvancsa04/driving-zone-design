@@ -85,7 +85,7 @@ export function HeroSlider() {
             Vezess magabiztosan velünk
           </h1>
           <p className="mt-6 max-w-xl text-lg text-white/85 md:text-xl">
-            Az elmúlt másfél évtizedben több mint 5000 diákunk szerzett sikeresen jogosítványt az
+            Az. elmúlt másfél évtizedben több mint 5000 diákunk szerzett sikeresen jogosítványt az
             irányításunk alatt. Légy te a következő!
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
