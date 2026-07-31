@@ -23,29 +23,35 @@ const INSTRUCTORS = [
   {
     name: "Illés Bálint",
     role: "TULAJDONOS, MENEDZSER ÉS OKTATÓ",
+    image: balintImg.url,
     description: "Emberi értékek és szerénység: Bálint nem a háttérből irányít. Tulajdonosként és menedzserként is közvetlen, két lábbal a földön járó ember maradt, aki maga is aktívan oktat. Számára minden egyes tanuló egyedi sorsot jelent, és a legnagyobb elismerés nem a száraz statisztika, hanem a diákok arcán látható őszinte öröm és biztonságérzet."
   },
   {
     name: "Illés László",
     role: "AZ ISKOLA SZÜLŐATYJA",
+    image: instructorImageAsset.url,
     description: "Több évtizedes szakmai tapasztalat: László a kétezres évek eleje óta oktat, így több ezer sofőr hálás neki a biztos alapokért. Nincs olyan közlekedési szituáció, műszaki probléma vagy oktatási helyzet, amivel az évek során ne találkozott volna."
   },
   {
     name: "Csüdör Lóránd",
     role: "GYAKORLATI OKTATÓ",
+    image: lorandImg.url,
     description: "Világjáró tapasztalat és magas szintű kommunikáció: Lóránd Kolozsváron végzett egyetemet, majd éveken át Angliában élt és dolgozott. Az ott szerzett tapasztalatok, a precizitás és a nemzetközi szemlélet mind hozzájárulnak ahhoz, hogy a legmagasabb színvonalon, végtelenül professzionálisan oktasson – nálunk akár idegen nyelven is!"
   },
   {
     name: "Szima Csilla",
     role: "ELMÉLETI OKTATÓ",
+    image: csillaImg.url,
     description: "Pedagógus a hivatásban és a volán mögött is: Csilla főállásban a kézdivásárhelyi Molnár Józsiás Gimnáziumban (Általános Iskolában) tanít. Professzionális pedagógiai módszertanának köszönhetően a legbonyolultabb elsőbbségadási szabályokat és jogszabályokat is úgy tudja elmagyarázni, hogy az azonnal érthetővé és logikussá válik."
   },
   {
     name: "Molnár Barbara",
     role: "\u00a0TITKÁRNŐ",
+    image: barbaraImg.url,
     description: "Fiatalos és lendületes: Mindig pozitív energiával fogad, és segít, hogy már az első lépésektől otthonosan érezd magad nálunk. Rendkívül empatikus: Pontosan tudja, hogy a vizsgák előtt mindenki izgul. Bármilyen kérdésed vagy kétséged van, hozzá bátran fordulhatsz – megértéssel és bátorítással fogad."
   }
 ];
+
 
 function InstructorsPage() {
   return (

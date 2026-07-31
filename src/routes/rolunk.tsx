@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Section } from "@/components/Section";
 import { ImagePlaceholder } from "@/components/Placeholder";
 import { Check } from "lucide-react";
+import aboutImage from "@/assets/about-storefront.jpg.asset.json";
 
 export const Route = createFileRoute("/rolunk")({
   head: () => ({
@@ -54,8 +55,10 @@ function AboutPage() {
           </div>
           <div className="lg:col-span-5">
             <ImagePlaceholder
-              label="[Csapatkép helye]"
+              label="Driving Zone iroda"
               className="aspect-[4/5] rounded-3xl"
+              src={aboutImage.url}
+              alt="Driving Zone autósiskola irodája Kézdivásárhelyen"
             />
           </div>
         </div>
