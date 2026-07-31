@@ -2,6 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Section } from "@/components/Section";
 import { ImagePlaceholder } from "@/components/Placeholder";
 import instructorImageAsset from "@/assets/instructor-fleet.jpg.asset.json";
+import balintImg from "@/assets/instructor-balint.jpg.asset.json";
+import lorandImg from "@/assets/instructor-lorand.webp.asset.json";
+import csillaImg from "@/assets/instructor-csilla.jpg.asset.json";
+import barbaraImg from "@/assets/instructor-barbara.jpg.asset.json";
 
 export const Route = createFileRoute("/oktatok")({
   head: () => ({

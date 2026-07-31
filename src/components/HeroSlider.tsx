@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Award, Car, ChevronLeft, ChevronRight, Users } from "lucide-react";
-import hero1 from "@/assets/hero-1.png.asset.json";
+import heroStorefront from "@/assets/hero-storefront.jpg.asset.json";
 import hero2 from "@/assets/hero-2.png.asset.json";
 
 const SLIDES = [
+  { src: heroStorefront.url, alt: "Driving Zone – autósiskola irodánk Kézdivásárhelyen", position: "50% 50%" },
   { src: hero2.url, alt: "Driving Zone – Skoda a tengerparton", position: "50% 50%" },
-  { src: hero1.url, alt: "Driving Zone – iratkozás", position: "50% 40%" },
 ];
 
 const INTERVAL = 6000;
