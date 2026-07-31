@@ -376,6 +376,7 @@ export type Database = {
       }
       services: {
         Row: {
+          badge: string
           category: string
           created_at: string
           cta_link: string
@@ -390,6 +391,7 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          badge?: string
           category?: string
           created_at?: string
           cta_link?: string
@@ -404,6 +406,7 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          badge?: string
           category?: string
           created_at?: string
           cta_link?: string
