@@ -159,8 +159,10 @@ function HomePage() {
           {CARS.map((car, index) => (
             <article key={index} className="card-lift rounded-3xl overflow-hidden bg-card border border-border">
               <ImagePlaceholder
-                label="[Autó fotó]"
+                label={car.model}
                 className="aspect-[16/10] rounded-none border-0 border-b border-border"
+                src={car.image}
+                alt={`Driving Zone oktatóautó – ${car.model}`}
               />
               <div className="p-8">
                 <h3 className="text-xl font-semibold text-ink">{car.model}</h3>
@@ -179,6 +181,7 @@ function HomePage() {
             title="Sikereink | Driving Zone"
             intro="Tekintse meg korábbi munkáinkat és azokat az eredményeket, amelyekre büszkék vagyunk."
           />
+          <SocialLinks className="mb-10 -mt-4" />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {GALLERY_IMAGES.slice(0, 4).map((src, i) => (
               <ImagePlaceholder
