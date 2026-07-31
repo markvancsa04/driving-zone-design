@@ -1,51 +1,40 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, Section } from "@/components/Section";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { lines, pageBySlug, setting, siteContentQuery, useSiteContent } from "@/lib/cms";
 
 export const Route = createFileRoute("/kapcsolat")({
-  head: () => ({
+  loader: async ({ context }) =>
+    pageBySlug(await context.queryClient.ensureQueryData(siteContentQuery), "/kapcsolat"),
+  head: ({ loaderData }) => ({
     meta: [
-      { title: "Kapcsolat – Driving Zone" },
-      { name: "description", content: "Elérhetőségeink és nyitvatartásunk." },
-      { property: "og:title", content: "Kapcsolat – Driving Zone" },
-      { property: "og:description", content: "Vedd fel velünk a kapcsolatot." },
+      { title: loaderData?.meta_title || loaderData?.title || "Kapcsolat – Driving Zone" },
+      { name: "description", content: loaderData?.meta_description || loaderData?.intro || "" },
+      { property: "og:title", content: loaderData?.meta_title || loaderData?.title || "" },
+      { property: "og:description", content: loaderData?.meta_description || loaderData?.intro || "" },
     ],
   }),
   component: ContactPage,
 });
 
 function ContactPage() {
-  const openingHours = [
-    "hétfő, 8:00–16:00",
-    "kedd, 8:00–16:00",
-    "szerda, 8:00–16:00",
-    "csütörtök, 8:00–16:00",
-    "péntek, 8:00–16:00",
-    "szombat, Zárva",
-    "vasárnap, Zárva"
-  ];
+  const content = useSiteContent();
+  const page = pageBySlug(content, "/kapcsolat");
+  const openingHours = lines(setting(content, "contact_hours"));
 
   return (
     <>
-      <PageHeader
-        eyebrow="Kapcsolat"
-        title="Lépj velünk kapcsolatba!"
-        intro="Kérdésed van? Vedd fel velünk a kapcsolatot, és örömmel segítünk!"
-      />
+      <PageHeader eyebrow={page.eyebrow} title={page.title} intro={page.intro} />
       <Section>
         <div className="grid gap-10 lg:grid-cols-2 items-start">
           <div className="grid sm:grid-cols-2 gap-4">
             <Card
               icon={<MapPin className="size-5" />}
               label="Cím"
-              value={
-                <div className="whitespace-pre-line">
-                  {"Kézdivásárhely\n17-es Udvartér 1-es szám"}
-                </div>
-              }
+              value={<div className="whitespace-pre-line">{setting(content, "contact_address")}</div>}
             />
-            <Card icon={<Phone className="size-5" />} label="Telefon" value="0786 585 405" />
-            <Card icon={<Mail className="size-5" />} label="E-mail" value="drivingzonedrz@gmail.com" />
+            <Card icon={<Phone className="size-5" />} label="Telefon" value={setting(content, "contact_phone")} />
+            <Card icon={<Mail className="size-5" />} label="E-mail" value={setting(content, "contact_email")} />
             <Card
               icon={<Clock className="size-5" />}
               label="Nyitvatartás"
@@ -63,7 +52,7 @@ function ContactPage() {
           <div className="placeholder-frame aspect-[4/3] lg:aspect-[5/4] rounded-3xl overflow-hidden">
             <iframe
               title="Google Maps"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2770.8166579895083!2d26.1389208!3d46.0009686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDbCsDAwJzAzLjUiTiAyNsKwMDgnMjAuMSJF!5e0!3m2!1sen!2shu!4v1715850000000!5m2!1sen!2shu"
+              src={setting(content, "contact_map_embed")}
               className="w-full h-full border-0"
               allowFullScreen
               loading="lazy"
