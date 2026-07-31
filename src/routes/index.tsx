@@ -4,7 +4,11 @@ import { ImagePlaceholder } from "@/components/Placeholder";
 import { Section, SectionHeader } from "@/components/Section";
 import { HeroSlider } from "@/components/HeroSlider";
 import instructorImageAsset from "@/assets/instructor-fleet.jpg.asset.json";
+import balintImg from "@/assets/instructor-balint.jpg.asset.json";
+import skodaImg from "@/assets/car-skoda-fabia.webp.asset.json";
+import seatImg from "@/assets/car-seat-ibiza.webp.asset.json";
 import { GALLERY_IMAGES } from "@/lib/gallery-images";
+import { SocialLinks } from "@/components/SocialLinks";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -38,12 +42,14 @@ const SERVICES = [
 
 const FEATURED_INSTRUCTORS = [
   {
-    name: " Illés Bálint - tulajdonos, menedzser és oktató",
+    name: " Illés Bálint - tulajdonos, menedzser és oktató",
     intro: "Ismerd meg az iskola vezetőjét.",
+    image: balintImg.url,
   },
   {
-    name: "Illés László - az iskola szülőatyja",
+    name: "Illés László - az iskola szülőatyja",
     intro: "Ismerd meg alapítónkat és mentorunkat.",
+    image: instructorImageAsset.url,
   },
 ];
 
@@ -51,10 +57,12 @@ const CARS = [
   {
     model: "Skoda Fabia (2022)",
     description: "Egy rendkívül barátságos, kiválóan manőverezhető és könnyen kezelhető autó, amely tökéletes partner a városi forgalom és a parkolási feladatok magabiztos elsajátításához.",
+    image: skodaImg.url,
   },
   {
     model: "Seat Ibiza 2022",
     description: "Dinamikus, modern és végtelenül kényelmes kompakt autó, amely a legújabb biztonsági rendszereivel és könnyed vezethetőségével azonnal meghozza a kedved a vezetéshez.",
+    image: seatImg.url,
   },
 ];
 
@@ -124,7 +132,7 @@ function HomePage() {
                 <ImagePlaceholder
                   label="[Oktató fotó]"
                   className="aspect-[16/10] rounded-none border-0 border-b border-border"
-                  src={instructorImageAsset.url}
+                  src={instructor.image}
                   alt="Driving Zone oktatói"
                 />
                 <div className="p-8">
@@ -155,8 +163,10 @@ function HomePage() {
           {CARS.map((car, index) => (
             <article key={index} className="card-lift rounded-3xl overflow-hidden bg-card border border-border">
               <ImagePlaceholder
-                label="[Autó fotó]"
+                label={car.model}
                 className="aspect-[16/10] rounded-none border-0 border-b border-border"
+                src={car.image}
+                alt={`Driving Zone oktatóautó – ${car.model}`}
               />
               <div className="p-8">
                 <h3 className="text-xl font-semibold text-ink">{car.model}</h3>
@@ -175,6 +185,7 @@ function HomePage() {
             title="Sikereink | Driving Zone"
             intro="Tekintse meg korábbi munkáinkat és azokat az eredményeket, amelyekre büszkék vagyunk."
           />
+          <SocialLinks className="mb-10 -mt-4" />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {GALLERY_IMAGES.slice(0, 4).map((src, i) => (
               <ImagePlaceholder
