@@ -1,40 +1,44 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link } from "@tanstack/react-router";
 import { ArrowRight, Award, Car, ChevronLeft, ChevronRight, Users } from "lucide-react";
-import heroStorefront from "@/assets/hero-storefront.jpg.asset.json";
-import hero2 from "@/assets/hero-2.png.asset.json";
-
-const SLIDES = [
-  { src: heroStorefront.url, alt: "Driving Zone – autósiskola irodánk Kézdivásárhelyen", position: "50% 50%" },
-  { src: hero2.url, alt: "Driving Zone – Skoda a tengerparton", position: "50% 50%" },
-];
+import { CmsLink } from "./CmsLink";
+import { setting, useSiteContent } from "@/lib/cms";
 
 const INTERVAL = 6000;
 
 export function HeroSlider() {
+  const content = useSiteContent();
+  const slides = content.heroSlides;
+  const count = Math.max(slides.length, 1);
+
   const [index, setIndex] = useState(0);
   const timer = useRef<number | null>(null);
   const touchStart = useRef<number | null>(null);
 
   const go = useCallback((next: number) => {
-    setIndex((next + SLIDES.length) % SLIDES.length);
-  }, []);
+    setIndex((next + count) % count);
+  }, [count]);
 
   useEffect(() => {
     timer.current = window.setInterval(() => {
-      setIndex((i) => (i + 1) % SLIDES.length);
+      setIndex((i) => (i + 1) % count);
     }, INTERVAL);
     return () => {
       if (timer.current) window.clearInterval(timer.current);
     };
-  }, [index]);
+  }, [index, count]);
 
   const reset = () => {
     if (timer.current) window.clearInterval(timer.current);
     timer.current = window.setInterval(() => {
-      setIndex((i) => (i + 1) % SLIDES.length);
+      setIndex((i) => (i + 1) % count);
     }, INTERVAL);
   };
+
+  const stats = [
+    { icon: <Users className="size-5" />, value: setting(content, "hero_stat1_value"), label: setting(content, "hero_stat1_label") },
+    { icon: <Award className="size-5" />, value: setting(content, "hero_stat2_value"), label: setting(content, "hero_stat2_label") },
+    { icon: <Car className="size-5" />, value: setting(content, "hero_stat3_value"), label: setting(content, "hero_stat3_label") },
+  ].filter((s) => s.value);
 
   return (
     <section
@@ -51,18 +55,18 @@ export function HeroSlider() {
       }}
     >
       {/* Slides */}
-      {SLIDES.map((s, i) => (
+      {slides.map((s, i) => (
         <div
-          key={s.src}
+          key={s.id}
           className="absolute inset-0 transition-opacity duration-[1400ms] ease-in-out will-change-[opacity]"
           style={{ opacity: i === index ? 1 : 0, zIndex: i === index ? 1 : 0 }}
           aria-hidden={i !== index}
         >
           <img
-            src={s.src}
+            src={s.image_url}
             alt={s.alt}
             className="h-full w-full object-cover"
-            style={{ objectPosition: s.position }}
+            style={{ objectPosition: s.focal_position || "50% 50%" }}
             loading={i === 0 ? "eager" : "lazy"}
             decoding="async"
             draggable={false}
@@ -79,64 +83,67 @@ export function HeroSlider() {
         <div className="max-w-2xl fade-up">
           <div className="mb-5 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-brand">
             <span className="h-px w-8 bg-brand" />
-            Driving Zone
+            {setting(content, "hero_eyebrow")}
           </div>
           <h1 className="text-5xl font-semibold leading-[1.02] text-white md:text-6xl lg:text-7xl">
-            Vezess magabiztosan velünk
+            {setting(content, "hero_title")}
           </h1>
           <p className="mt-6 max-w-xl text-lg text-white/85 md:text-xl">
-            Az elmúlt másfél évtizedben több mint 5000 diákunk szerzett sikeresen jogosítványt az
-            irányításunk alatt. Légy te a következő!
+            {setting(content, "hero_subtitle")}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/jelentkezes" className="btn-brand">
-              Jelentkezés <ArrowRight className="size-4" />
-            </Link>
-            <Link
-              to="/szolgaltatasok"
+            <CmsLink href={setting(content, "hero_cta_primary_link", "/jelentkezes")} className="btn-brand">
+              {setting(content, "hero_cta_primary_text")} <ArrowRight className="size-4" />
+            </CmsLink>
+            <CmsLink
+              href={setting(content, "hero_cta_secondary_link", "/szolgaltatasok")}
               className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/20"
             >
-              Szolgáltatások
-            </Link>
+              {setting(content, "hero_cta_secondary_text")}
+            </CmsLink>
           </div>
 
           <dl className="mt-12 grid max-w-lg grid-cols-3 gap-6">
-            <HeroStat icon={<Users className="size-5" />} value="5000+" label="Diák" />
-            <HeroStat icon={<Award className="size-5" />} value="15" label="Év" />
-            <HeroStat icon={<Car className="size-5" />} value="21" label="Kolléga" />
+            {stats.map((s) => (
+              <HeroStat key={s.label} icon={s.icon} value={s.value} label={s.label} />
+            ))}
           </dl>
         </div>
       </div>
 
-      {/* Arrows */}
-      <button
-        aria-label="Előző dia"
-        onClick={() => { go(index - 1); reset(); }}
-        className="absolute left-3 top-1/2 z-30 hidden -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-black/30 p-3 text-white backdrop-blur-sm transition hover:bg-black/50 md:inline-flex"
-      >
-        <ChevronLeft className="size-5" />
-      </button>
-      <button
-        aria-label="Következő dia"
-        onClick={() => { go(index + 1); reset(); }}
-        className="absolute right-3 top-1/2 z-30 hidden -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-black/30 p-3 text-white backdrop-blur-sm transition hover:bg-black/50 md:inline-flex"
-      >
-        <ChevronRight className="size-5" />
-      </button>
-
-      {/* Dots */}
-      <div className="absolute bottom-6 left-1/2 z-30 flex -translate-x-1/2 gap-2">
-        {SLIDES.map((_, i) => (
+      {slides.length > 1 && (
+        <>
+          {/* Arrows */}
           <button
-            key={i}
-            aria-label={`Dia ${i + 1}`}
-            onClick={() => { go(i); reset(); }}
-            className={`h-2 rounded-full transition-all ${
-              i === index ? "w-8 bg-brand" : "w-2 bg-white/50 hover:bg-white/80"
-            }`}
-          />
-        ))}
-      </div>
+            aria-label="Előző dia"
+            onClick={() => { go(index - 1); reset(); }}
+            className="absolute left-3 top-1/2 z-30 hidden -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-black/30 p-3 text-white backdrop-blur-sm transition hover:bg-black/50 md:inline-flex"
+          >
+            <ChevronLeft className="size-5" />
+          </button>
+          <button
+            aria-label="Következő dia"
+            onClick={() => { go(index + 1); reset(); }}
+            className="absolute right-3 top-1/2 z-30 hidden -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-black/30 p-3 text-white backdrop-blur-sm transition hover:bg-black/50 md:inline-flex"
+          >
+            <ChevronRight className="size-5" />
+          </button>
+
+          {/* Dots */}
+          <div className="absolute bottom-6 left-1/2 z-30 flex -translate-x-1/2 gap-2">
+            {slides.map((s, i) => (
+              <button
+                key={s.id}
+                aria-label={`Dia ${i + 1}`}
+                onClick={() => { go(i); reset(); }}
+                className={`h-2 rounded-full transition-all ${
+                  i === index ? "w-8 bg-brand" : "w-2 bg-white/50 hover:bg-white/80"
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </section>
   );
 }
