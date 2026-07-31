@@ -68,7 +68,7 @@ function InstructorsPage() {
               <ImagePlaceholder
                 label={instructor.name}
                 className="aspect-[4/5] rounded-none border-0 border-b border-border"
-                src={instructorImageAsset.url}
+                src={instructor.image}
                 alt={instructor.name}
               />
               <div className="p-8">

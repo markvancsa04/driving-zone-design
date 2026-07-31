@@ -1,10 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Star, Car } from "lucide-react";
+import { ArrowRight, Star, Car, Facebook, Instagram } from "lucide-react";
 import { ImagePlaceholder } from "@/components/Placeholder";
 import { Section, SectionHeader } from "@/components/Section";
 import { HeroSlider } from "@/components/HeroSlider";
 import instructorImageAsset from "@/assets/instructor-fleet.jpg.asset.json";
+import balintImg from "@/assets/instructor-balint.jpg.asset.json";
+import skodaImg from "@/assets/car-skoda-fabia.webp.asset.json";
+import seatImg from "@/assets/car-seat-ibiza.webp.asset.json";
 import { GALLERY_IMAGES } from "@/lib/gallery-images";
+import { SocialLinks } from "@/components/SocialLinks";
 
 export const Route = createFileRoute("/")({
   head: () => ({
