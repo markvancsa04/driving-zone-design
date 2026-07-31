@@ -42,12 +42,14 @@ const SERVICES = [
 
 const FEATURED_INSTRUCTORS = [
   {
-    name: " Illés Bálint - tulajdonos, menedzser és oktató",
+    name: " Illés Bálint - tulajdonos, menedzser és oktató",
     intro: "Ismerd meg az iskola vezetőjét.",
+    image: balintImg.url,
   },
   {
-    name: "Illés László - az iskola szülőatyja",
+    name: "Illés László - az iskola szülőatyja",
     intro: "Ismerd meg alapítónkat és mentorunkat.",
+    image: instructorImageAsset.url,
   },
 ];
 
@@ -55,10 +57,12 @@ const CARS = [
   {
     model: "Skoda Fabia (2022)",
     description: "Egy rendkívül barátságos, kiválóan manőverezhető és könnyen kezelhető autó, amely tökéletes partner a városi forgalom és a parkolási feladatok magabiztos elsajátításához.",
+    image: skodaImg.url,
   },
   {
     model: "Seat Ibiza 2022",
     description: "Dinamikus, modern és végtelenül kényelmes kompakt autó, amely a legújabb biztonsági rendszereivel és könnyed vezethetőségével azonnal meghozza a kedved a vezetéshez.",
+    image: seatImg.url,
   },
 ];
 
